@@ -1,9 +1,16 @@
 #include <iostream>
 
 
+#include "time.h"
+
 int main()
 {
-    std::cout "TEST";
+    //std::cout << "TEST";
+    Time time;
 
-    return 0
+    time.get_current_time();
+
+
+
+    return 0;
 }
