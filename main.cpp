@@ -1,14 +1,11 @@
 #include <iostream>
-
-
-#include "time.h"
+#include "CurrentTime/current_time.h"
 
 int main()
 {
-    //std::cout << "TEST";
     Time time;
 
-    time.get_current_time();
+    std::cout << time.get_current_time();
 
 
 

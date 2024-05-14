@@ -1,5 +1,5 @@
-#ifndef TIME_H
-#define TIME_H
+#ifndef CURRENT_TIME_H
+#define CURRENT_TIME_H
 #include <iostream>
 #include <chrono>
 #include <ctime>
@@ -11,9 +11,9 @@ using namespace std::chrono;
 class Time
 {
 private:
-    string time;
+
 public:
-    auto get_current_time();
+    string get_current_time();
 };
 
 
