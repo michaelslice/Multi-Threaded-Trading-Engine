@@ -129,29 +129,29 @@ TRADING/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/build
 .PHONY : TRADING/fast
 
-Time/time.o: Time/time.cpp.o
-.PHONY : Time/time.o
+CurrentTime/current_time.o: CurrentTime/current_time.cpp.o
+.PHONY : CurrentTime/current_time.o
 
 # target to build an object file
-Time/time.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Time/time.cpp.o
-.PHONY : Time/time.cpp.o
+CurrentTime/current_time.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o
+.PHONY : CurrentTime/current_time.cpp.o
 
-Time/time.i: Time/time.cpp.i
-.PHONY : Time/time.i
+CurrentTime/current_time.i: CurrentTime/current_time.cpp.i
+.PHONY : CurrentTime/current_time.i
 
 # target to preprocess a source file
-Time/time.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Time/time.cpp.i
-.PHONY : Time/time.cpp.i
+CurrentTime/current_time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.i
+.PHONY : CurrentTime/current_time.cpp.i
 
-Time/time.s: Time/time.cpp.s
-.PHONY : Time/time.s
+CurrentTime/current_time.s: CurrentTime/current_time.cpp.s
+.PHONY : CurrentTime/current_time.s
 
 # target to generate assembly for a file
-Time/time.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Time/time.cpp.s
-.PHONY : Time/time.cpp.s
+CurrentTime/current_time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s
+.PHONY : CurrentTime/current_time.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -186,9 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TRADING"
-	@echo "... Time/time.o"
-	@echo "... Time/time.i"
-	@echo "... Time/time.s"
+	@echo "... CurrentTime/current_time.o"
+	@echo "... CurrentTime/current_time.i"
+	@echo "... CurrentTime/current_time.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

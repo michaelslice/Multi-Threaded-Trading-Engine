@@ -69,19 +69,19 @@ include CMakeFiles/TRADING.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TRADING.dir/flags.make
 
-CMakeFiles/TRADING.dir/Time/time.cpp.o: CMakeFiles/TRADING.dir/flags.make
-CMakeFiles/TRADING.dir/Time/time.cpp.o: ../Time/time.cpp
-CMakeFiles/TRADING.dir/Time/time.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TRADING.dir/Time/time.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/Time/time.cpp.o -MF CMakeFiles/TRADING.dir/Time/time.cpp.o.d -o CMakeFiles/TRADING.dir/Time/time.cpp.o -c /root/Multi-Threaded-Trading-Engine/Time/time.cpp
+CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o: CMakeFiles/TRADING.dir/flags.make
+CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o: ../CurrentTime/current_time.cpp
+CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o -MF CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o.d -o CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o -c /root/Multi-Threaded-Trading-Engine/CurrentTime/current_time.cpp
 
-CMakeFiles/TRADING.dir/Time/time.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TRADING.dir/Time/time.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/Multi-Threaded-Trading-Engine/Time/time.cpp > CMakeFiles/TRADING.dir/Time/time.cpp.i
+CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/Multi-Threaded-Trading-Engine/CurrentTime/current_time.cpp > CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.i
 
-CMakeFiles/TRADING.dir/Time/time.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/Time/time.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/Time/time.cpp -o CMakeFiles/TRADING.dir/Time/time.cpp.s
+CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/CurrentTime/current_time.cpp -o CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s
 
 CMakeFiles/TRADING.dir/main.cpp.o: CMakeFiles/TRADING.dir/flags.make
 CMakeFiles/TRADING.dir/main.cpp.o: ../main.cpp
@@ -99,13 +99,13 @@ CMakeFiles/TRADING.dir/main.cpp.s: cmake_force
 
 # Object files for target TRADING
 TRADING_OBJECTS = \
-"CMakeFiles/TRADING.dir/Time/time.cpp.o" \
+"CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o" \
 "CMakeFiles/TRADING.dir/main.cpp.o"
 
 # External object files for target TRADING
 TRADING_EXTERNAL_OBJECTS =
 
-TRADING: CMakeFiles/TRADING.dir/Time/time.cpp.o
+TRADING: CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o
 TRADING: CMakeFiles/TRADING.dir/main.cpp.o
 TRADING: CMakeFiles/TRADING.dir/build.make
 TRADING: CMakeFiles/TRADING.dir/link.txt

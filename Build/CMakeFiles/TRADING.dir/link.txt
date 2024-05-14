@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/TRADING.dir/Time/time.cpp.o CMakeFiles/TRADING.dir/main.cpp.o -o TRADING 
+/usr/bin/c++ CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o CMakeFiles/TRADING.dir/main.cpp.o -o TRADING 

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/root/Multi-Threaded-Trading-Engine/Time/time.cpp" "CMakeFiles/TRADING.dir/Time/time.cpp.o" "gcc" "CMakeFiles/TRADING.dir/Time/time.cpp.o.d"
+  "/root/Multi-Threaded-Trading-Engine/CurrentTime/current_time.cpp" "CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o" "gcc" "CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o.d"
   "/root/Multi-Threaded-Trading-Engine/main.cpp" "CMakeFiles/TRADING.dir/main.cpp.o" "gcc" "CMakeFiles/TRADING.dir/main.cpp.o.d"
   )
 
