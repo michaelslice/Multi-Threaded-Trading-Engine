@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/TRADING.dir/Time/time.cpp.o"
+  "CMakeFiles/TRADING.dir/Time/time.cpp.o.d"
+  "CMakeFiles/TRADING.dir/main.cpp.o"
+  "CMakeFiles/TRADING.dir/main.cpp.o.d"
+  "TRADING"
+  "TRADING.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/TRADING.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
