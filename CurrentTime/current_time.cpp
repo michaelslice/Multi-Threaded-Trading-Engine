@@ -16,5 +16,8 @@ std::string Time::get_current_time()
 
     std::stringstream ss;
     ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
+    
+    this->time = ss.str();
+
     return ss.str();
 }

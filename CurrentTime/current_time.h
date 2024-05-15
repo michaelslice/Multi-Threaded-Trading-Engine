@@ -11,7 +11,7 @@ using namespace std::chrono;
 class Time
 {
 private:
-
+    string time;
 public:
     string get_current_time();
 };

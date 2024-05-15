@@ -7,7 +7,7 @@ class OrderId
 private:
     uint64_t OrderId;
 public:
-    
+    void get_OrderId();
 };
 
 #endif

@@ -1,15 +1,16 @@
 #include <iostream>
 
-enum OrderType
+enum class OrderType
 {
-    MarketOrder,
-    LimitOrder,
-    StopLossOrder,
-    StopLimitOrder,
+    Market,
+    Limit,
+    StopLoss,
+    StopLimit,
     AON, // All Or None
     IOC, // Immediate Or Cancel
     FOK, // Fill Or Kill
+    FAK, // Fill And Kill
     GTC, // Good Till Cancelled
-    Day, 
+    GoodForDay, 
     TakeProfit,
 };
