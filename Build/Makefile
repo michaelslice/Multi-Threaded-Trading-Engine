@@ -153,6 +153,54 @@ CurrentTime/current_time.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s
 .PHONY : CurrentTime/current_time.cpp.s
 
+OrderId/orderid.o: OrderId/orderid.cpp.o
+.PHONY : OrderId/orderid.o
+
+# target to build an object file
+OrderId/orderid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o
+.PHONY : OrderId/orderid.cpp.o
+
+OrderId/orderid.i: OrderId/orderid.cpp.i
+.PHONY : OrderId/orderid.i
+
+# target to preprocess a source file
+OrderId/orderid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/OrderId/orderid.cpp.i
+.PHONY : OrderId/orderid.cpp.i
+
+OrderId/orderid.s: OrderId/orderid.cpp.s
+.PHONY : OrderId/orderid.s
+
+# target to generate assembly for a file
+OrderId/orderid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/OrderId/orderid.cpp.s
+.PHONY : OrderId/orderid.cpp.s
+
+Orderbook/orderbook.o: Orderbook/orderbook.cpp.o
+.PHONY : Orderbook/orderbook.o
+
+# target to build an object file
+Orderbook/orderbook.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o
+.PHONY : Orderbook/orderbook.cpp.o
+
+Orderbook/orderbook.i: Orderbook/orderbook.cpp.i
+.PHONY : Orderbook/orderbook.i
+
+# target to preprocess a source file
+Orderbook/orderbook.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.i
+.PHONY : Orderbook/orderbook.cpp.i
+
+Orderbook/orderbook.s: Orderbook/orderbook.cpp.s
+.PHONY : Orderbook/orderbook.s
+
+# target to generate assembly for a file
+Orderbook/orderbook.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.s
+.PHONY : Orderbook/orderbook.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -189,6 +237,12 @@ help:
 	@echo "... CurrentTime/current_time.o"
 	@echo "... CurrentTime/current_time.i"
 	@echo "... CurrentTime/current_time.s"
+	@echo "... OrderId/orderid.o"
+	@echo "... OrderId/orderid.i"
+	@echo "... OrderId/orderid.s"
+	@echo "... Orderbook/orderbook.o"
+	@echo "... Orderbook/orderbook.i"
+	@echo "... Orderbook/orderbook.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

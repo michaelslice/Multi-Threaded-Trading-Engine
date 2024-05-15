@@ -7,6 +7,8 @@
 #include "../OrderId/orderid.h"
 #include "../OrderStatus/orderstatus.h"
 #include "../CurrentTime/current_time.h"
+#include "../Using/using.h"
+
 
 /**
  * 
@@ -33,16 +35,24 @@
 class Order
 {
 private:
-    uint32_t price;
-    uint32_t quantity;
+    Price price;
+    Quantity quantity;
     Side orderside; 
     OrderId orderid;
     Time timestamp;
     OrderStatus orderstatus;
     OrderType ordertype;
 public:
-    Order(uint32_t _price, uint32_t _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype):
+    Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype):
     price(_price), quantity(_quantity), orderside(_orderside), orderid(_orderid), timestamp(_timestamp), orderstatus(_orderstatus), ordertype(_ordertype) {};
+
+    Price getPrice() { return price; };
+    Quantity getQuantity() { return quantity; };
+    Side getSide() { return orderside; };
+    OrderId getOrderId() { return orderid; };
+    Time getTimestamp() { return timestamp; };
+    OrderStatus getOrderStatus() { return orderstatus; };
+    OrderType getOrderType() { return ordertype; };
 };
 
 #endif

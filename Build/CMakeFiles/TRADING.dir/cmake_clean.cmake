@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o"
   "CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o.d"
+  "CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o"
+  "CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o.d"
+  "CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o"
+  "CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o.d"
   "CMakeFiles/TRADING.dir/main.cpp.o"
   "CMakeFiles/TRADING.dir/main.cpp.o.d"
   "TRADING"

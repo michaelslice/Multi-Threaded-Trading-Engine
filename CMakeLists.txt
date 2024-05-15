@@ -10,6 +10,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 file(GLOB_RECURSE SOURCES 
     "${PROJECT_SOURCE_DIR}/*.cpp"
     "${PROJECT_SOURCE_DIR}/CurrentTime/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Orderbook/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Order/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Levels/*.cpp"
+    "${PROJECT_SOURCE_DIR}/OrderId/*.cpp"
+    "${PROJECT_SOURCE_DIR}/OrderStatus/*.cpp"
+    "${PROJECT_SOURCE_DIR}/OrderType/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Side/*.cpp"
 )
 
 # Ignore CMake-generated files

@@ -81,12 +81,12 @@ clean: CMakeFiles/TRADING.dir/clean
 CMakeFiles/TRADING.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=1,2,3 "Built target TRADING"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=1,2,3,4,5 "Built target TRADING"
 .PHONY : CMakeFiles/TRADING.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TRADING.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/Multi-Threaded-Trading-Engine/Build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/Multi-Threaded-Trading-Engine/Build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/TRADING.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /root/Multi-Threaded-Trading-Engine/Build/CMakeFiles 0
 .PHONY : CMakeFiles/TRADING.dir/rule
