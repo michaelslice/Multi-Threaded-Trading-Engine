@@ -8,6 +8,7 @@ class Orderbook
 private:
 public:
     Orderbook();
+    void ValidOrderDay();
 };
 
 #endif

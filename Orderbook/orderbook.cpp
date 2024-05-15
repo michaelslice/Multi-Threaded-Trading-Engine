@@ -1,6 +1,10 @@
 #include <iostream>
 
+#include <queue>
+
 #include "orderbook.h"
+
+using namespace std;
 
 
 /**
@@ -13,3 +17,8 @@ Orderbook::Orderbook()
 {
     
 };
+
+void Orderbook::ValidOrderDay()
+{
+    std::queue<Order*> Orders;
+}
