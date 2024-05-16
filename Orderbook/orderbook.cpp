@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 /**
  *  The method AddOrder(const Order& order) is used to insert a order into the appropriate map for buy or sell orders.
  *
@@ -30,7 +31,7 @@ void Orderbook::AddOrder(const Order& order)
         }
         else // If the price level does exist insert into existing vector
         {
-            it->second.push_back(order);
+            it->second.push_back(order); // Refers to the value, at the key(price)
         }
     }
     else // If not buy order is a sell
@@ -43,7 +44,7 @@ void Orderbook::AddOrder(const Order& order)
         }
         else
         {
-            it->second.push_back(order);
+            it->second.push_back(order); // Refers to the value, at the key(price)
         }
     }
 }
@@ -69,7 +70,7 @@ void Orderbook::CancelOrder(const Order& order)
         if(it->getOrderId() == order.getOrderId())
         {
             orders.erase(it);
-            return;
+            break;
         }
     }
     throw std::logic_error("Error: The requested order to be cancelled does not exist.");
@@ -101,6 +102,17 @@ void Orderbook::ModifyOrder(const Order& replaceOrder, const Order& newOrder)
 }
 
 
+/**
+ *  The method Orderbook::ValidForDay()
+ *  
+ *
+ *  @param const 
+ *
+ *  @return void
+ *
+ *  @note 
+ *  
+ */
 void Orderbook::ValidForDay()
 {
     Time time;

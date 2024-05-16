@@ -7,6 +7,12 @@
 
 #include "../Order/order.h"
 
+/**
+ *  The class that will facilate the logic for buyers and sellers to submit trades
+ * 
+ * 
+*/
+
 // Placing the price as the key allows for orders to be organized by price level
 // Price is the index, Key is vector of orders
 
