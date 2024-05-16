@@ -71,11 +71,8 @@ void Orderbook::CancelOrder(const Order& order)
             orders.erase(it);
             return;
         }
-        else
-        {
-            throw std::logic_error("Error: The requested order to be cancelled does not exist.");
-        }
     }
+    throw std::logic_error("Error: The requested order to be cancelled does not exist.");
 }
 
 
