@@ -117,10 +117,37 @@ void Orderbook::ValidForDay()
 {
     Time time;
     string hours = time.get_current_time();
+
+    /*
+    
     if(stoi(hours.substr(11, 2)) < 4 || stoi(hours.substr(11, 2)) > 16)
     {
         std::cout << '\n' << "Error: Not valid trading hours, valid-Hours 4:00AM-8:00PM." << '\n';
     }
+    
+    */
 
 
+    std::cout << "What mode would you like to run? Enter 1 for Test Mode, Enter 2 for interactive mode, Enter 3 for Cancel Mode ";
+    int mode;
+    std::cin >> mode;
+
+    switch (mode)
+    {
+    case 1:
+        std::cout << "Test Mode" << '\n';
+        
+        break;
+    case 2:
+        std::cout << "Interactive Mode" << '\n';
+        
+        break;
+    case 3:
+        std::cout << "Cancel Mode" << '\n';
+
+        break;
+    default:
+    std::cout << "Error invalid option entered" << '\n';
+        break;
+    }
 }
