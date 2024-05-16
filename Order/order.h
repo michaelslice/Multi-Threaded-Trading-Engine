@@ -34,6 +34,7 @@
 
 class Order
 {
+ 
 private:
     Price price;
     Quantity quantity;
@@ -46,13 +47,18 @@ public:
     Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype):
     price(_price), quantity(_quantity), orderside(_orderside), orderid(_orderid), timestamp(_timestamp), orderstatus(_orderstatus), ordertype(_ordertype) {};
 
-    Price getPrice() { return price; };
-    Quantity getQuantity() { return quantity; };
-    Side getSide() { return orderside; };
-    OrderId getOrderId() { return orderid; };
-    Time getTimestamp() { return timestamp; };
-    OrderStatus getOrderStatus() { return orderstatus; };
-    OrderType getOrderType() { return ordertype; };
+    Price getPrice() const { return price; };
+    Quantity getQuantity() const { return quantity; };
+    Side getSide() const { return orderside; };
+    OrderId getOrderId() const { return orderid; };
+    Time getTimestamp() const { return timestamp; };
+    OrderStatus getOrderStatus() const { return orderstatus; };
+    OrderType getOrderType() const { return ordertype; };
+
+
 };
+
+
+
 
 #endif

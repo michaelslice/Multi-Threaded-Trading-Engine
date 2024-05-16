@@ -4,10 +4,18 @@
 
 class OrderId
 {
+    friend bool operator==(const OrderId&, const OrderId&);
+
 private:
     uint64_t OrderId;
 public:
     void get_OrderId();
 };
+
+bool operator==(const OrderId& lhs, const OrderId& rhs) 
+{
+    return lhs.OrderId == rhs.OrderId;
+}
+
 
 #endif
