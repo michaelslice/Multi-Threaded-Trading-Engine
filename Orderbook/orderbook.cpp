@@ -1,32 +1,21 @@
 #include <iostream>
-
 #include <queue>
 #include <vector>
+#include <chrono>
+
 #include "orderbook.h"
+#include "../CurrentTime/current_time.h"
 
 using namespace std;
 
-
 /**
- *  Stores a list of buy and sell orders for financial securites 
- *  organized time price priority
- * 
-*/
-
-Orderbook::Orderbook()
-{
-    
-};
-
-
-/**
- * The AddOrder(const Order& order) is used to insert a order into the appropriate map for buy or sell orders.
+ *  The method AddOrder(const Order& order) is used to insert a order into the appropriate map for buy or sell orders.
  *
- * @param const Order& order : A const reference to a existing order
+ *  @param const Order& order : A const reference to a existing order
  *
- * @return void
+ *  @return void
  *
- * @note The maps are organized by price(key), and a vector of orders(value).  
+ *  @note The maps are organized by price(key), and a vector of orders(value).  
  *
  */
 void Orderbook::AddOrder(const Order& order)
@@ -61,14 +50,15 @@ void Orderbook::AddOrder(const Order& order)
 
 
 /**
- * The CancelOrder(const Order& order)
+ *  The method CancelOrder(const Order& order) is used cancel a order before it is filled 
  *
- * @param const Order& order : A const reference to a existing order
+ *  @param const Order& order : A const reference to a existing order
  *
- * @return void
+ *  @return void
  *
- * @note 
- *
+ *  @note The method iterates through buyOrders, or sellOrders and removes a order 
+ *  the same OrderId before it is filled
+ *  
  */
 void Orderbook::CancelOrder(const Order& order)
 {
@@ -83,12 +73,45 @@ void Orderbook::CancelOrder(const Order& order)
         }
         else
         {
-            throw std::logic_error("Error that order does not exist");
+            throw std::logic_error("Error: The requested order to be cancelled does not exist.");
         }
     }
 }
 
-void Orderbook::ValidOrderDay()
+
+/**
+ *  The method ModifyOrder(const Order& order) is used to allow a user to modify an existing orders
+ *  OrderType, Price, Quantity, and OrderType
+ *
+ *  @param const Order& order : A const reference to a existing order
+ *
+ *  @return void
+ *
+ *  @note The method will allow the user to change 
+ *  
+ */
+void Orderbook::ModifyOrder(const Order& replaceOrder, const Order& newOrder)
 {
-    std::queue<Order*> Orders;
+    if(replaceOrder.getOrderStatus() != OrderStatus::Filled)
+    {
+        CancelOrder(replaceOrder);
+        AddOrder(newOrder);
+    }
+    else
+    {
+        throw std::logic_error("Error: Order cannot be modified it has already been filled.");
+    }
+}
+
+
+void Orderbook::ValidForDay()
+{
+    Time time;
+    string hours = time.get_current_time();
+    if(stoi(hours.substr(11, 2)) < 4 || stoi(hours.substr(11, 2)) > 16)
+    {
+        std::cout << '\n' << "Error: Not valid trading hours, valid-Hours 4:00AM-8:00PM." << '\n';
+    }
+
+
 }

@@ -2,15 +2,16 @@
 #include <iomanip>
 #include "CurrentTime/current_time.h"
 
+#include "Orderbook/orderbook.h"
+
 using namespace std;
 
 int main()
 {
     Time time;
+    Orderbook orderbook;
 
-    string data = time.get_current_time(); 
-    std::cout << std::endl;
-    std::cout << data << std::endl;
+    orderbook.ValidForDay();
 
     return 0;
 }

@@ -10,26 +10,22 @@
 // Placing the price as the key allows for orders to be organized by price level
 // Price is the index, Key is vector of orders
 
+using PriveLevelMap = std::map<double, std::vector<Order>>; 
+
 class Orderbook
 {
- friend bool operator==(const Orderbook&, const Orderbook&);
 
 private:
-    std::map<double, std::vector<Order>> buyOrders; // Price as the key, and orders as the value
+    std::map<double, std::vector<Order>> buyOrders; 
     std::map<double, std::vector<Order>> sellOrders;
 
-    
 public:
-    Orderbook();
-    void ValidOrderDay();
+    Orderbook() = default;
+    Orderbook(PriveLevelMap _buyOrders, PriveLevelMap _sellOrders): buyOrders(_buyOrders), sellOrders(_sellOrders) {};  
+    void ValidForDay();
     void AddOrder(const Order& order);
     void CancelOrder(const Order& order);
-    void ModifyOrder(const Order& order);
-
-    
-
-
-void Orderbook::InsertIntoPriceLevel(std::vector<Order>&);
+    void ModifyOrder(const Order& replaceOrder, const Order& newOrder);
 };
 
 

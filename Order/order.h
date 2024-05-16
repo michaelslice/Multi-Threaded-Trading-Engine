@@ -14,9 +14,9 @@
  * 
  *  The class Order represents all characteristics of a valid order
  * 
- *  uint32_t price : Represents a unsigned integer value of a price
+ *  Price price : Represents a unsigned integer value of a price
  * 
- *  uint32_t quantity : Represents a quantity of a valid security
+ *  Quantity quantity : Represents a quantity of a valid security
  * 
  *  Side orderside; : Buy order (bid), or sell order (ask)
  * 
