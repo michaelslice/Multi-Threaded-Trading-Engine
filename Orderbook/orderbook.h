@@ -28,15 +28,13 @@ private:
 public:
     Orderbook() = default;
     Orderbook(PriveLevelMap _buyOrders, PriveLevelMap _sellOrders): buyOrders(_buyOrders), sellOrders(_sellOrders) {};  
-    
-    // If any of following occurs generate a compile error, because there should only be one Orderbook object
+    ~Orderbook();
+
+    // If the compiler matches a function call to any of the following, generate a compilation error 
     Orderbook(const Orderbook& other) = delete; // Copy constructor
     Orderbook& operator=(const Orderbook& other) = delete; // Copy assignment operator
     Orderbook(Orderbook&& other) = delete; // Move constructor
-    Orderbook& operator=(Orderbook&& other) = delete; // Move assignment operator
-
-    ~Orderbook();
-    
+    Orderbook& operator=(Orderbook&& other) = delete; // Move assignment operator    
     
     void ValidForDay();
     void AddOrder(const Order& order);
