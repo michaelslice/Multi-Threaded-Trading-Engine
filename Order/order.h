@@ -29,7 +29,7 @@
  *  OrderType ordertype : Refers to the specific type of order being placed by the trader, 
  *  such as limit order, market order, stop order, stop-limit order 
  * 
- * 
+ *  Can also be considered time in force
 */
 
 class Order
@@ -54,11 +54,6 @@ public:
     Time getTimestamp() const { return timestamp; };
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
-
-
 };
-
-
-
 
 #endif
