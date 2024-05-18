@@ -19,34 +19,9 @@ using namespace std;
  *  @note The maps are organized by price(key), and a vector of orders(value).  
  *
  */
-void Orderbook::AddOrder(const Order& order)
+void Orderbook::AddOrder(OrderPointer order)
 {
-    if(order.getSide() == Side::Buy)
-    {   
-        auto it = buyOrders.find(order.getPrice()); // Assign the key value of the order to the iterator
-
-        if(it == buyOrders.end()) // If the price level does not exist insert into vector
-        {
-            buyOrders.insert({order.getPrice(), {order}});    
-        }
-        else // If the price level does exist insert into existing vector
-        {
-            it->second.push_back(order); // Refers to the value, at the key(price)
-        }
-    }
-    else // If not buy order is a sell
-    {
-        auto it = sellOrders.find(order.getPrice());
-
-        if(it == sellOrders.end())
-        {
-            sellOrders.insert({order.getPrice(), {order}});
-        }
-        else
-        {
-            it->second.push_back(order); // Refers to the value, at the key(price)
-        }
-    }
+    
 }
 
 
@@ -61,19 +36,9 @@ void Orderbook::AddOrder(const Order& order)
  *  the same OrderId before it is filled
  *  
  */
-void Orderbook::CancelOrder(const Order& order)
+void Orderbook::CancelOrder(OrderPointer order)
 {
-    std::vector<Order>& orders = order.getSide() == Side::Buy ? buyOrders[order.getPrice()] : sellOrders[order.getPrice()];
 
-    for(auto it = orders.begin(); it != orders.end(); ++it)
-    {
-        if(it->getOrderId() == order.getOrderId())
-        {
-            orders.erase(it);
-            break;
-        }
-    }
-    throw std::logic_error("Error: The requested order to be cancelled does not exist.");
 }
 
 
@@ -88,17 +53,9 @@ void Orderbook::CancelOrder(const Order& order)
  *  @note The method will allow the user to change 
  *  
  */
-void Orderbook::ModifyOrder(const Order& replaceOrder, const Order& newOrder)
+void Orderbook::ModifyOrder()
 {
-    if(replaceOrder.getOrderStatus() != OrderStatus::Filled)
-    {
-        CancelOrder(replaceOrder);
-        AddOrder(newOrder);
-    }
-    else
-    {
-        throw std::logic_error("Error: Order cannot be modified it has already been filled.");
-    }
+
 }
 
 

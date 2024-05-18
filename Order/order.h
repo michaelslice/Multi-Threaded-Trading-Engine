@@ -1,6 +1,9 @@
 #ifndef ORDER_H
 #define ORDER_H
 #include <iostream>
+#include <memory>
+#include <algorithm>
+#include <list>
 
 #include "../Side/side.h"
 #include "../OrderType/ordertype.h"
@@ -44,8 +47,15 @@ private:
     OrderStatus orderstatus;
     OrderType ordertype;
 public:
-    Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype):
-    price(_price), quantity(_quantity), orderside(_orderside), orderid(_orderid), timestamp(_timestamp), orderstatus(_orderstatus), ordertype(_ordertype) {};
+    Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype)
+        : price(_price)
+        , quantity(_quantity)
+        , orderside(_orderside)
+        , orderid(_orderid)
+        , timestamp(_timestamp)
+        , orderstatus(_orderstatus)
+        , ordertype(_ordertype) 
+    {};
 
     Price getPrice() const { return price; };
     Quantity getQuantity() const { return quantity; };
@@ -55,5 +65,8 @@ public:
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
 };
+
+using OrderPointer = std::shared_ptr<Order>;
+using OrderPointers = std::list<OrderPointer>; // Doubly linked list of Order objects
 
 #endif
