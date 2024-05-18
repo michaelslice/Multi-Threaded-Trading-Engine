@@ -153,6 +153,30 @@ CurrentTime/current_time.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s
 .PHONY : CurrentTime/current_time.cpp.s
 
+MatchingEngine/matchingengine.o: MatchingEngine/matchingengine.cpp.o
+.PHONY : MatchingEngine/matchingengine.o
+
+# target to build an object file
+MatchingEngine/matchingengine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o
+.PHONY : MatchingEngine/matchingengine.cpp.o
+
+MatchingEngine/matchingengine.i: MatchingEngine/matchingengine.cpp.i
+.PHONY : MatchingEngine/matchingengine.i
+
+# target to preprocess a source file
+MatchingEngine/matchingengine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.i
+.PHONY : MatchingEngine/matchingengine.cpp.i
+
+MatchingEngine/matchingengine.s: MatchingEngine/matchingengine.cpp.s
+.PHONY : MatchingEngine/matchingengine.s
+
+# target to generate assembly for a file
+MatchingEngine/matchingengine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.s
+.PHONY : MatchingEngine/matchingengine.cpp.s
+
 OrderId/orderid.o: OrderId/orderid.cpp.o
 .PHONY : OrderId/orderid.o
 
@@ -201,6 +225,30 @@ Orderbook/orderbook.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.s
 .PHONY : Orderbook/orderbook.cpp.s
 
+Test/test.o: Test/test.cpp.o
+.PHONY : Test/test.o
+
+# target to build an object file
+Test/test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Test/test.cpp.o
+.PHONY : Test/test.cpp.o
+
+Test/test.i: Test/test.cpp.i
+.PHONY : Test/test.i
+
+# target to preprocess a source file
+Test/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Test/test.cpp.i
+.PHONY : Test/test.cpp.i
+
+Test/test.s: Test/test.cpp.s
+.PHONY : Test/test.s
+
+# target to generate assembly for a file
+Test/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Test/test.cpp.s
+.PHONY : Test/test.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -237,12 +285,18 @@ help:
 	@echo "... CurrentTime/current_time.o"
 	@echo "... CurrentTime/current_time.i"
 	@echo "... CurrentTime/current_time.s"
+	@echo "... MatchingEngine/matchingengine.o"
+	@echo "... MatchingEngine/matchingengine.i"
+	@echo "... MatchingEngine/matchingengine.s"
 	@echo "... OrderId/orderid.o"
 	@echo "... OrderId/orderid.i"
 	@echo "... OrderId/orderid.s"
 	@echo "... Orderbook/orderbook.o"
 	@echo "... Orderbook/orderbook.i"
 	@echo "... Orderbook/orderbook.s"
+	@echo "... Test/test.o"
+	@echo "... Test/test.i"
+	@echo "... Test/test.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

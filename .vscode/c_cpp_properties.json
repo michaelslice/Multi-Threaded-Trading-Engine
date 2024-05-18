@@ -4,7 +4,16 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "Time"
+                "CurrentTime",
+                "Levels",
+                "MatchingEngine",
+                "Order",
+                "Orderbook",
+                "OrderId",
+                "OrderStatus",
+                "Side",
+                "OrderType",
+                "Test"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

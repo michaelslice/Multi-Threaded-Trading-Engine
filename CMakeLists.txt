@@ -17,6 +17,7 @@ file(GLOB_RECURSE SOURCES
     "${PROJECT_SOURCE_DIR}/OrderStatus/*.cpp"
     "${PROJECT_SOURCE_DIR}/OrderType/*.cpp"
     "${PROJECT_SOURCE_DIR}/Side/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Test/*.cpp"
 )
 
 # Ignore CMake-generated files

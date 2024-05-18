@@ -4,14 +4,25 @@
 
 #include "Orderbook/orderbook.h"
 
+
+#include "Test/test.h"
+
+
+
+
 using namespace std;
 
 int main()
 {
-    Time time;
-    Orderbook orderbook;
+//    Time time;
+  //  Orderbook orderbook;
 
-    orderbook.ValidForDay();
+    //orderbook.ValidForDay();
+
+
+    Test test;
+
+    test.readFile("orders.txt");
 
     return 0;
 }

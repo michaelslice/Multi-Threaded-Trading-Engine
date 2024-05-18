@@ -15,7 +15,7 @@ class MatchingEngine
 private:
 public:
     MatchingEngine(PriveLevelMap buyOrders, PriveLevelMap sellOrders);
-    void MatchingEngine::ExecuteTrade();
+    void ExecuteTrade();
 };
 
 

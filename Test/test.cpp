@@ -13,10 +13,6 @@
  *  
  * 
 */
-Test::Test()
-{
-
-}
 
 
 int Test::readFile(std::string file)

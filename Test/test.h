@@ -8,8 +8,9 @@ class Test
 {
 private:
 public:
-    Test();
+
     int readFile(std::string file);
+    void printFile();
 };
 
 

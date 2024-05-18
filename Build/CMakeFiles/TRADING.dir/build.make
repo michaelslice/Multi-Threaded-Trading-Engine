@@ -83,10 +83,24 @@ CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/CurrentTime/current_time.cpp -o CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.s
 
+CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o: CMakeFiles/TRADING.dir/flags.make
+CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o: ../MatchingEngine/matchingengine.cpp
+CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o -MF CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o.d -o CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o -c /root/Multi-Threaded-Trading-Engine/MatchingEngine/matchingengine.cpp
+
+CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/Multi-Threaded-Trading-Engine/MatchingEngine/matchingengine.cpp > CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.i
+
+CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/MatchingEngine/matchingengine.cpp -o CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.s
+
 CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o: CMakeFiles/TRADING.dir/flags.make
 CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o: ../OrderId/orderid.cpp
 CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o -MF CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o.d -o CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o -c /root/Multi-Threaded-Trading-Engine/OrderId/orderid.cpp
 
 CMakeFiles/TRADING.dir/OrderId/orderid.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/TRADING.dir/OrderId/orderid.cpp.s: cmake_force
 CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o: CMakeFiles/TRADING.dir/flags.make
 CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o: ../Orderbook/orderbook.cpp
 CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o -MF CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o.d -o CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o -c /root/Multi-Threaded-Trading-Engine/Orderbook/orderbook.cpp
 
 CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.i: cmake_force
@@ -111,10 +125,24 @@ CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/Orderbook/orderbook.cpp -o CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.s
 
+CMakeFiles/TRADING.dir/Test/test.cpp.o: CMakeFiles/TRADING.dir/flags.make
+CMakeFiles/TRADING.dir/Test/test.cpp.o: ../Test/test.cpp
+CMakeFiles/TRADING.dir/Test/test.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TRADING.dir/Test/test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/Test/test.cpp.o -MF CMakeFiles/TRADING.dir/Test/test.cpp.o.d -o CMakeFiles/TRADING.dir/Test/test.cpp.o -c /root/Multi-Threaded-Trading-Engine/Test/test.cpp
+
+CMakeFiles/TRADING.dir/Test/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TRADING.dir/Test/test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/Multi-Threaded-Trading-Engine/Test/test.cpp > CMakeFiles/TRADING.dir/Test/test.cpp.i
+
+CMakeFiles/TRADING.dir/Test/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TRADING.dir/Test/test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/Multi-Threaded-Trading-Engine/Test/test.cpp -o CMakeFiles/TRADING.dir/Test/test.cpp.s
+
 CMakeFiles/TRADING.dir/main.cpp.o: CMakeFiles/TRADING.dir/flags.make
 CMakeFiles/TRADING.dir/main.cpp.o: ../main.cpp
 CMakeFiles/TRADING.dir/main.cpp.o: CMakeFiles/TRADING.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TRADING.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TRADING.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TRADING.dir/main.cpp.o -MF CMakeFiles/TRADING.dir/main.cpp.o.d -o CMakeFiles/TRADING.dir/main.cpp.o -c /root/Multi-Threaded-Trading-Engine/main.cpp
 
 CMakeFiles/TRADING.dir/main.cpp.i: cmake_force
@@ -128,20 +156,24 @@ CMakeFiles/TRADING.dir/main.cpp.s: cmake_force
 # Object files for target TRADING
 TRADING_OBJECTS = \
 "CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o" \
+"CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o" \
 "CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o" \
 "CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o" \
+"CMakeFiles/TRADING.dir/Test/test.cpp.o" \
 "CMakeFiles/TRADING.dir/main.cpp.o"
 
 # External object files for target TRADING
 TRADING_EXTERNAL_OBJECTS =
 
 TRADING: CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o
+TRADING: CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o
 TRADING: CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o
 TRADING: CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o
+TRADING: CMakeFiles/TRADING.dir/Test/test.cpp.o
 TRADING: CMakeFiles/TRADING.dir/main.cpp.o
 TRADING: CMakeFiles/TRADING.dir/build.make
 TRADING: CMakeFiles/TRADING.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable TRADING"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable TRADING"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TRADING.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
