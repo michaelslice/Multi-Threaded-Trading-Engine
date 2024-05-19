@@ -8,7 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <condition_variable>
-
+#include <atomic>
 #include "../Order/order.h"
 
 /**
@@ -29,7 +29,7 @@ private:
     std::map<double, std::vector<OrderPointers>> buyOrders; 
     std::map<double, std::vector<OrderPointers>> sellOrders;
 
-    mutable std::mutex ordersMutex;
+    mutable std::mutex mtx;
     std::thread orderThread;
     std::condition_variable shutdownConditionVariable_;
     std::atomic<bool> shutdown_{ false };
