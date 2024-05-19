@@ -12,7 +12,6 @@ file(GLOB_RECURSE SOURCES
     "${PROJECT_SOURCE_DIR}/CurrentTime/*.cpp"
     "${PROJECT_SOURCE_DIR}/Orderbook/*.cpp"
     "${PROJECT_SOURCE_DIR}/Order/*.cpp"
-    "${PROJECT_SOURCE_DIR}/Levels/*.cpp"
     "${PROJECT_SOURCE_DIR}/OrderId/*.cpp"
     "${PROJECT_SOURCE_DIR}/OrderStatus/*.cpp"
     "${PROJECT_SOURCE_DIR}/OrderType/*.cpp"

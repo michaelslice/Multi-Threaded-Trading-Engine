@@ -20,14 +20,14 @@
 // Placing the price as the key allows for orders to be organized by price level
 // Price is the index, Key is vector of orders
 
-using PriveLevelMap = std::map<double, std::vector<OrderPointers>>; 
+using PriveLevelMap = std::map<double, OrderPointers>; 
 
 class Orderbook
 {
 
 private:
-    std::map<double, std::vector<OrderPointers>> buyOrders; 
-    std::map<double, std::vector<OrderPointers>> sellOrders;
+    std::map<double, OrderPointers> buyOrders; 
+    std::map<double, OrderPointers> sellOrders;
 
     mutable std::mutex mtx;
     std::thread orderThread;
