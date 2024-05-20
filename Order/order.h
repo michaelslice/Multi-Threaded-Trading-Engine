@@ -76,4 +76,6 @@ public:
 using OrderPointer = std::shared_ptr<Order>;
 using OrderPointers = std::list<OrderPointer>; // Doubly linked list of Order objects
 
+using OrderIds = std::vector<OrderId>;
+
 #endif

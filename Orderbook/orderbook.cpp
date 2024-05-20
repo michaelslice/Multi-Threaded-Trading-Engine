@@ -9,10 +9,16 @@
 using namespace std;
 
 
+// using OrderPointer = std::shared_ptr<Order>;
+// using OrderPointers = std::list<OrderPointer>; 
+
+// std::map<double, OrderPointers> buyOrders; 
+// std::map<double, OrderPointers> sellOrders;
+
 /**
- *  The method AddOrder(const Order& order) is used to insert a order into the appropriate map for buy or sell orders.
+ *  The method AddOrder(OrderPointer order) is used to insert a order into the appropriate map for buy or sell orders.
  *
- *  @param const Order& order : A const reference to a existing order
+ *  @param const OrderPointer order : A const reference to a existing order
  *
  *  @return void
  *
@@ -21,24 +27,17 @@ using namespace std;
  */
 void Orderbook::AddOrder(OrderPointer order)
 {
-    // auto side_status = order ? order->getSide() == Side::Buy : order->getSide() == Side::Sell;  
+    auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
-    if(order->getSide() == Side::Buy)
-    {
-        buyOrders.insert(12.00, order);
-    }
-    else
-    {
-
-    }
-
+    orders.emplace(order->getPrice(), order);
+    orderIds.insert(orderIds.begin(), order->getOrderId());
 }
 
 
 /**
- *  The method CancelOrder(const Order& order) is used cancel a order before it is filled 
+ *  The method CancelOrder(Order orderid) is used cancel a order before it is filled 
  *
- *  @param const Order& order : A const reference to a existing order
+ *  @param const Order orderid : A const reference to a existing order
  *
  *  @return void
  *
@@ -46,17 +45,31 @@ void Orderbook::AddOrder(OrderPointer order)
  *  the same OrderId before it is filled
  *  
  */
-void Orderbook::CancelOrder(OrderPointer order)
+void Orderbook::CancelOrder(Order orderid)
 {
+    auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
+        
+    for(auto& order : orders)
+    {
+        auto& orders_at_level = order.second;
 
+        auto it = std::find_if(orders_at_level.begin(), orders_at_level.end(),
+        [&](const auto& o) { return o->getOrderId() == orderid.getOrderId(); });
+        
+        if(it != orders_at_level.end())
+        {
+            orders_at_level.erase(it);
+            break;
+        }
+    }
 }
 
 
 /**
- *  The method ModifyOrder(const Order& order) is used to allow a user to modify an existing orders
+ *  The method ModifyOrder(Order orderid) is used to allow a user to modify an existing orders
  *  OrderType, Price, Quantity, and OrderType
  *
- *  @param const Order& order : A const reference to a existing order
+ *  @param const Order orderid : A const reference to a existing order
  *
  *  @return void
  *
@@ -65,6 +78,8 @@ void Orderbook::CancelOrder(OrderPointer order)
  */
 void Orderbook::ModifyOrder(Order orderid)
 {
+    auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
+
 
 }
 

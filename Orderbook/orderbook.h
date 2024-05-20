@@ -11,6 +11,8 @@
 #include <atomic>
 #include "../Order/order.h"
 
+#include "../OrderId/orderid.h"
+
 /**
  *  The class that will facilate the logic for buyers and sellers to submit trades
  * 
@@ -20,14 +22,24 @@
 // Placing the price as the key allows for orders to be organized by price level
 // Price is the index, Key is vector of orders
 
+// using OrderPointer = std::shared_ptr<Order>;
+// using OrderPointers = std::list<OrderPointer>; 
+
 using PriceLevelMap = std::map<double, OrderPointers>; 
 
 class Orderbook
 {
 
 private:
-    std::map<double, OrderPointers> buyOrders; 
-    std::map<double, OrderPointers> sellOrders;
+     // std::map<Price, OrderPointers, std::greater<Price>> buyOrders; sort the keys in ascending 
+     // std::map<Price, OrderPointers, std::less<Price>> sellOrders; sort the keys in descending
+
+
+    std::map<Price, OrderPointers> buyOrders; 
+    std::map<Price, OrderPointers> sellOrders;
+
+
+    std::vector<OrderId> orderIds;
 
     mutable std::mutex mtx;
     std::thread orderThread;
@@ -37,11 +49,13 @@ private:
 
 public:
     Orderbook() = default;
+    
+    /*
     Orderbook(PriceLevelMap _buyOrders, PriceLevelMap _sellOrders)
     : buyOrders(_buyOrders)
     , sellOrders(_sellOrders)
     {};
-
+    */
 
 
     // If the compiler matches a function call to any of the following, generate a compilation error 
@@ -55,7 +69,7 @@ public:
     
     // TODO NEED TO IMPLEMENT A BETTER SOLUTION
     void AddOrder(OrderPointer order);
-    void CancelOrder(OrderPointer order);
+    void CancelOrder(Order orderid);
     void ModifyOrder(Order orderid);
 };
 
