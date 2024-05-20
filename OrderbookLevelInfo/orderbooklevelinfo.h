@@ -2,9 +2,12 @@
 #define ORDERBOOKINFO_H
 #include <iostream>
 
-#include "../OrderbookLevel/orderbooklevel.h"
+//#include "../OrderbookLevel/orderbooklevel.h"
 
 // Show info regarding a trade info
+
+
+/*
 
 class OrderbookLevelInfo
 {
@@ -21,5 +24,9 @@ public:
     const OrderbookLevel& getAsks() const { return asks; };
 
 };
+
+
+*/
+
 
 #endif

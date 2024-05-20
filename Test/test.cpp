@@ -4,24 +4,26 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
-
-
 #include "test.h"
 
 
 /**
- *  File format
- * 
- *  Side
- *  Time in Force
- *  Quantity
- *  Price
- *  
-*/
-
+ *  The method readFile(const std::string& file) is used to read orders from a file, and display their contents
+ *
+ *  @param const Order& order : A const reference to a existing order
+ *
+ *  @return int : Return wether there was error or not
+ *
+ *  @note Data from files consists of info in the order of Side, Time in Force, Quantity, and Price
+ *
+ */
 int Test::readFile(const std::string& file)
 {
     std::ifstream inputFile(file);
+    std::string SideReader;
+    std::string TimeInForceReader;
+    std::string PriceReader;
+    std::string QuantityReader;
 
     if(!inputFile.is_open())
     {
@@ -30,28 +32,24 @@ int Test::readFile(const std::string& file)
     }
 
     std::string line;
-    std::cout << "Orders Placed" << '\n';
+    std::cout << std::right << std::setw(31) << std::setfill(' ') << "Orders Placed" << '\n' << '\n'
 
-    while(inputFile)
+    << "Side" << std::right << std::setw(16) << std::setfill(' ') 
+    << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
+    << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
+    << "Price" << '\n';
+
+    while (std::getline(inputFile, line))
     {
-        std::stringstream linestream(line);
-        
-        std::string Side;
-        std::string TimeInForce;
-        std::string Price;
-        std::string Quantity;
-        
-        std::getline(inputFile, Side, ' ');
-        std::getline(inputFile, TimeInForce, ' ');
-        std::getline(inputFile, Price, ' ');
-        std::getline(inputFile, Quantity, ' ');
+        std::istringstream iss(line);
 
+        iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader;
 
-        std::cout << Side << " " << TimeInForce << " " << Price << " " << Quantity << " " << '\n';
+        std::cout << std::setw(9) << std::left << SideReader
+                  << std::setw(17) << std::left << TimeInForceReader
+                  << std::setw(13) << std::left << PriceReader
+                  << QuantityReader << '\n';
     }
-
-
-
 
     inputFile.close();
     return 0;

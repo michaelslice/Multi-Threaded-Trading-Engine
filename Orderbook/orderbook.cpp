@@ -21,7 +21,17 @@ using namespace std;
  */
 void Orderbook::AddOrder(OrderPointer order)
 {
-    
+    // auto side_status = order ? order->getSide() == Side::Buy : order->getSide() == Side::Sell;  
+
+    if(order->getSide() == Side::Buy)
+    {
+        buyOrders.insert(12.00, order);
+    }
+    else
+    {
+
+    }
+
 }
 
 
@@ -53,7 +63,7 @@ void Orderbook::CancelOrder(OrderPointer order)
  *  @note The method will allow the user to change 
  *  
  */
-void Orderbook::ModifyOrder()
+void Orderbook::ModifyOrder(Order orderid)
 {
 
 }

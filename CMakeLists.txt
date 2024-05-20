@@ -24,3 +24,5 @@ list(FILTER SOURCES EXCLUDE REGEX ".*CMakeCXXCompilerId.cpp$")
 
 # Add executable target, using all files listed in SOURCES
 add_executable(TRADING ${SOURCES})
+
+file(COPY "${PROJECT_SOURCE_DIR}/Test/TestFiles/orders.txt" DESTINATION "${CMAKE_BINARY_DIR}")

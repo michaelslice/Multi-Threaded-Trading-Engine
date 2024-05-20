@@ -20,7 +20,7 @@
 // Placing the price as the key allows for orders to be organized by price level
 // Price is the index, Key is vector of orders
 
-using PriveLevelMap = std::map<double, OrderPointers>; 
+using PriceLevelMap = std::map<double, OrderPointers>; 
 
 class Orderbook
 {
@@ -37,7 +37,7 @@ private:
 
 public:
     Orderbook() = default;
-    Orderbook(PriveLevelMap _buyOrders, PriveLevelMap _sellOrders)
+    Orderbook(PriceLevelMap _buyOrders, PriceLevelMap _sellOrders)
     : buyOrders(_buyOrders)
     , sellOrders(_sellOrders)
     {};
@@ -56,7 +56,7 @@ public:
     // TODO NEED TO IMPLEMENT A BETTER SOLUTION
     void AddOrder(OrderPointer order);
     void CancelOrder(OrderPointer order);
-    void ModifyOrder();
+    void ModifyOrder(Order orderid);
 };
 
 
