@@ -3,6 +3,8 @@
 #include <string>
 #include "test.h"
 
+#include <sstream>
+
 /**
  *  File format
  * 
@@ -15,7 +17,7 @@
 */
 
 
-int Test::readFile(std::string file)
+int Test::readFile(const std::string& file)
 {
     std::ifstream inputFile(file);
 
@@ -26,15 +28,21 @@ int Test::readFile(std::string file)
     }
 
     std::string line;
-
     std::cout << "File Contents";
 
     while(std::getline(inputFile, line))
     {
-        std::cout << line;
+        std::cout << line << '\n';
+
+        std::stringstream linestream(line);
+        std::string value;
+        
+        while(std::getline(linestream, value, ' '))
+        {
+            std::cout << "Value" << value << '\n';
+        }
     }
 
     inputFile.close();
-
     return 0;
 }

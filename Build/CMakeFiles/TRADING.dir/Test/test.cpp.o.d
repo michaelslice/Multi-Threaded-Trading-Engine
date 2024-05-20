@@ -148,4 +148,5 @@ CMakeFiles/TRADING.dir/Test/test.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
- /root/Multi-Threaded-Trading-Engine/Test/test.h
+ /root/Multi-Threaded-Trading-Engine/Test/test.h \
+ /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc

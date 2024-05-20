@@ -40,30 +40,37 @@ class Order
  
 private:
     Price price;
-    Quantity quantity;
     Side orderside; 
     OrderId orderid;
     Time timestamp;
     OrderStatus orderstatus;
     OrderType ordertype;
+
+    Quantity initialQuantity;
+    Quantity remainingQuantity;
+    
 public:
     Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype)
         : price(_price)
-        , quantity(_quantity)
         , orderside(_orderside)
         , orderid(_orderid)
         , timestamp(_timestamp)
         , orderstatus(_orderstatus)
-        , ordertype(_ordertype) 
+        , ordertype(_ordertype)
+        , initialQuantity(_quantity)
+        , remainingQuantity(_quantity) 
     {};
 
     Price getPrice() const { return price; };
-    Quantity getQuantity() const { return quantity; };
     Side getSide() const { return orderside; };
     OrderId getOrderId() const { return orderid; };
     Time getTimestamp() const { return timestamp; };
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
+
+    Quantity getQuantity() const { return initialQuantity; };
+    Quantity getRemainingQuantity() const { return remainingQuantity; };
+    Quantity getFilledQuantity() const { return getFilledQuantity() - getRemainingQuantity(); };
 };
 
 using OrderPointer = std::shared_ptr<Order>;

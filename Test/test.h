@@ -9,7 +9,7 @@ class Test
 private:
 public:
 
-    int readFile(std::string file);
+    int readFile(const std::string& file);
     void printFile();
 };
 
