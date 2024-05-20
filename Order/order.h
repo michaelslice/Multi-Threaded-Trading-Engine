@@ -61,6 +61,17 @@ public:
         , remainingQuantity(_quantity) 
     {};
 
+    // If a order is modifed use this constructor
+    Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid)
+        : price(_price)
+        , orderside(_orderside)
+        , orderid(_orderid)
+        , initialQuantity(_quantity)
+        , remainingQuantity(_quantity) 
+    {};
+
+
+
     Price getPrice() const { return price; };
     Side getSide() const { return orderside; };
     OrderId getOrderId() const { return orderid; };

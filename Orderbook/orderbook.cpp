@@ -5,6 +5,7 @@
 
 #include "orderbook.h"
 #include "../CurrentTime/current_time.h"
+#include "../ModifyOrder/modifyorder.h"
 
 using namespace std;
 
@@ -79,7 +80,6 @@ void Orderbook::CancelOrder(Order orderid)
 void Orderbook::ModifyOrder(Order orderid)
 {
     auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
-
 
 }
 
