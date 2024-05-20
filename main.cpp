@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
+#include <string_view>
 #include "CurrentTime/current_time.h"
 #include "Orderbook/orderbook.h"
 #include "Test/test.h"
@@ -17,7 +18,7 @@ int main()
 
   Test test;
 
-  string filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
+  std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
   test.readFile("orders.txt");
 
   return 0;

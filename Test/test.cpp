@@ -17,9 +17,9 @@
  *  @note Data from files consists of info in the order of Side, Time in Force, Quantity, and Price
  *
  */
-int Test::readFile(const std::string& file)
+int Test::readFile(std::string_view file)
 {
-    std::ifstream inputFile(file);
+    std::ifstream inputFile(static_cast<std::string>(file));
     std::string SideReader;
     std::string TimeInForceReader;
     std::string PriceReader;
