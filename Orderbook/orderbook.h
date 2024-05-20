@@ -12,6 +12,7 @@
 #include "../Order/order.h"
 
 #include "../OrderId/orderid.h"
+#include "../ModifyOrder/modifyorder.h"
 
 /**
  *  The class that will facilate the logic for buyers and sellers to submit trades
@@ -70,7 +71,7 @@ public:
     // TODO NEED TO IMPLEMENT A BETTER SOLUTION
     void AddOrder(OrderPointer order);
     void CancelOrder(Order orderid);
-    void ModifyOrder(Order orderid);
+    void ModifyOrder(OrderModify orderid);
 };
 
 

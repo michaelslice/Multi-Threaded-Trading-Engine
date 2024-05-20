@@ -11,7 +11,7 @@
 #include "../Using/using.h"
 #include "../Order/order.h"
 
-class ModifyOrder
+class OrderModify
 {
 private:
     Price _price;

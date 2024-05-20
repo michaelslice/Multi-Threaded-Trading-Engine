@@ -77,7 +77,7 @@ void Orderbook::CancelOrder(Order orderid)
  *  @note The method will allow the user to change 
  *  
  */
-void Orderbook::ModifyOrder(Order orderid)
+void Orderbook::ModifyOrder(OrderModify orderid)
 {
     auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
