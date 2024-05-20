@@ -1,9 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <vector>
+#include <iomanip>
+
+
 #include "test.h"
 
-#include <sstream>
 
 /**
  *  File format
@@ -13,9 +17,7 @@
  *  Quantity
  *  Price
  *  
- * 
 */
-
 
 int Test::readFile(const std::string& file)
 {
@@ -28,20 +30,28 @@ int Test::readFile(const std::string& file)
     }
 
     std::string line;
-    std::cout << "File Contents";
+    std::cout << "Orders Placed" << '\n';
 
-    while(std::getline(inputFile, line))
+    while(inputFile)
     {
-        std::cout << line << '\n';
-
         std::stringstream linestream(line);
-        std::string value;
         
-        while(std::getline(linestream, value, ' '))
-        {
-            std::cout << "Value" << value << '\n';
-        }
+        std::string Side;
+        std::string TimeInForce;
+        std::string Price;
+        std::string Quantity;
+        
+        std::getline(inputFile, Side, ' ');
+        std::getline(inputFile, TimeInForce, ' ');
+        std::getline(inputFile, Price, ' ');
+        std::getline(inputFile, Quantity, ' ');
+
+
+        std::cout << Side << " " << TimeInForce << " " << Price << " " << Quantity << " " << '\n';
     }
+
+
+
 
     inputFile.close();
     return 0;

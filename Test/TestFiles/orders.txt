@@ -1,4 +1,3 @@
-//Buy Orders
 B GTC 120 50
 B GTC 100 60
 B GTC 20  23
@@ -9,7 +8,6 @@ B IOC 50  55
 B FOK 30  70
 B MKT 20  -
 
-//Sell Orders
 S GTC 45  45
 S GTC 67  32
 S GTC 23  96
