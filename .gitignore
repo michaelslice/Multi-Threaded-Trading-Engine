@@ -18,6 +18,8 @@ _deps
 *.o.d
 *.o
 
+/Build/CMakeFiles
+
 
 # User-specific files
 *.rsuser
