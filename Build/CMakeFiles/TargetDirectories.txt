@@ -1,3 +1,0 @@
-/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles/TRADING.dir
-/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles/edit_cache.dir
-/root/Multi-Threaded-Trading-Engine/Build/CMakeFiles/rebuild_cache.dir

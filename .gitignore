@@ -18,7 +18,7 @@ _deps
 *.o.d
 *.o
 
-/Build/CMakeFiles
+Multi-Threaded-Trading-Engine/Build/CMakeFiles
 
 
 # User-specific files

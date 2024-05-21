@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/TRADING.dir/CurrentTime/current_time.cpp.o CMakeFiles/TRADING.dir/MatchingEngine/matchingengine.cpp.o CMakeFiles/TRADING.dir/OrderId/orderid.cpp.o CMakeFiles/TRADING.dir/Orderbook/orderbook.cpp.o CMakeFiles/TRADING.dir/Test/test.cpp.o CMakeFiles/TRADING.dir/main.cpp.o -o TRADING 
