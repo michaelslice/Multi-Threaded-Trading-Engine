@@ -31,9 +31,7 @@ using OrderBook = std::map<Price, OrderPointer>;
 
 // int Orderbook::AddOrder(OrderPointer order, std::string_view file)
 int Orderbook::AddOrder(std::string_view file)
-{
-    // auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
-    
+{   
     std::ifstream inputFile(static_cast<std::string>(file));
     std::string SideReader;
     std::string TimeInForceReader;
@@ -75,21 +73,13 @@ int Orderbook::AddOrder(std::string_view file)
         if(orderTypeIterator != orderTypeTable.end()) { fileOrderType = orderTypeIterator->second; };     
 
         OrderBook orders = sideLogic ? buyOrders : sellOrders; 
-
-
         std::shared_ptr<Order> ptr (new Order(filePrice, fileQuantity, fileSide, fileOrderType));
-
-
         orders.insert(std::make_pair(filePrice, ptr));
 
         for(auto& d : orders)
         {
-            std::cout << "First Value " << d.first << " Second Value " << d.second << '\n';
+            std::cout << "First Value " << d.first << " Second Value " << d.second->getQuantity() << '\n';
         }
-
-   
-
-        
     }
 
     inputFile.close();
