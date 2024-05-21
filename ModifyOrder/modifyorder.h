@@ -24,11 +24,13 @@ public:
     Side getSide() const { return _side; };
     OrderId getOrderId() const { return _orderid; };
     Quantity getQuantity() const { return _quantity; };
+/*
 
     auto ModifyAOrder() const
     {
-        return std::make_shared<Order>(getPrice(), getQuantity(), getSide(), getOrderId());
+       // return std::make_shared<Order>(getPrice(), getQuantity(), getSide(), getOrderId());
     };
+*/
 };
 
 #endif

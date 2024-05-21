@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(TradingEngine)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # This will make the executable file appear in the source directory

@@ -28,10 +28,12 @@ using namespace std;
  */
 void Orderbook::AddOrder(OrderPointer order)
 {
+   /*
     auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
     orders.emplace(order->getPrice(), order);
     orderIds.insert(orderIds.begin(), order->getOrderId());
+*/
 }
 
 
@@ -48,6 +50,7 @@ void Orderbook::AddOrder(OrderPointer order)
  */
 void Orderbook::CancelOrder(Order orderid)
 {
+   /*
     auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
         
     for(auto& order : orders)
@@ -63,6 +66,7 @@ void Orderbook::CancelOrder(Order orderid)
             break;
         }
     }
+    */
 }
 
 
