@@ -69,15 +69,18 @@ int Orderbook::AddOrder(OrderPointer order, std::string_view file)
         auto it = table.find(SideReader);
         if(it != table.end()) { price_ = it->second; };
 
+/*
         std::unordered_map<std::string, OrderType> const table = { 
                                                                   {"GTC", OrderType::GoodTillCancel}
                                                                 , {"DAY", OrderType::GoodForDay}
-                                                                , {"FOC", OrderType::}
+                                                                , {"FAK", OrderType::FillAndKill}
                                                                 , {"FOK", OrderType::FillOrKill}
                                                                 , {"MKT", OrderType::Market}
         };
         auto it = table.find(SideReader);
-        if(it != table.end()) { _price1 = it->second; };
+       
+  */     
+       // if(it != table.end()) { _price1 = it->second; };
 
 
 
