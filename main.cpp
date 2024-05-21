@@ -21,5 +21,10 @@ int main()
   std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
   test.readFile("orders.txt");
 
+
+  Orderbook book;
+
+  book.AddOrder("orders.txt");
+
   return 0;
 }

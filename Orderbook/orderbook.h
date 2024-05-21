@@ -66,12 +66,15 @@ public:
     Orderbook& operator=(const Orderbook& other) = delete; // Copy assignment operator
     Orderbook(Orderbook&& other) = delete; // Move constructor
     Orderbook& operator=(Orderbook&& other) = delete; // Move assignment operator    
-    ~Orderbook();    
+    ~Orderbook() { };    
     
     void ValidForDay();
     
     // TODO NEED TO IMPLEMENT A BETTER SOLUTION
-    int AddOrder(OrderPointer order, std::string_view file);
+    
+    // int AddOrder(OrderPointer order, std::string_view file);
+    int AddOrder(std::string_view file);
+    
     void CancelOrder(Order orderid);
     void ModifyOrder(OrderModify orderid);
 };

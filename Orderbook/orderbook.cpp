@@ -9,8 +9,6 @@
 #include <iomanip>
 #include <map>
 
-
-
 #include "orderbook.h"
 #include "../CurrentTime/current_time.h"
 #include "../ModifyOrder/modifyorder.h"
@@ -29,16 +27,12 @@ using namespace std;
  */
 
 
-// using OrderPointer = std::shared_ptr<Order>;
-// using OrderPointers = std::list<OrderPointer>; 
+using OrderBook = std::map<Price, OrderPointer>;
 
-// std::map<double, OrderPointers> buyOrders; 
-// std::map<double, OrderPointers> sellOrders;
-
-
-int Orderbook::AddOrder(OrderPointer order, std::string_view file)
+// int Orderbook::AddOrder(OrderPointer order, std::string_view file)
+int Orderbook::AddOrder(std::string_view file)
 {
-    auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
+    // auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
     
     std::ifstream inputFile(static_cast<std::string>(file));
     std::string SideReader;
@@ -59,59 +53,43 @@ int Orderbook::AddOrder(OrderPointer order, std::string_view file)
 
         iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader;
 
-        bool sideLogic = SideReader == "B" ? sideLogic = true : sideLogic = false; 
+        bool sideLogic = SideReader == "B" ? sideLogic = true  : sideLogic = false; 
+        
+        Price filePrice = std::stod(PriceReader); 
+        Quantity fileQuantity = std::stod(QuantityReader);
+        Side fileSide;
+        OrderType fileOrderType;
 
-        Price _price = std::stoi(PriceReader);
-        Quantity _quantity = std::stoi(QuantityReader);
-        Side price_;
+        std::unordered_map<std::string, Side> const sideTable = { {"B", Side::Buy}, {"S", Side::Sell} };
+        auto sideIterator = sideTable.find(SideReader);
+        if(sideIterator != sideTable.end()) { fileSide = sideIterator->second; };
 
-        std::unordered_map<std::string, Side> const table = { {"B", Side::Buy}, {"S", Side::Sell} };
-        auto it = table.find(SideReader);
-        if(it != table.end()) { price_ = it->second; };
-
-/*
-        std::unordered_map<std::string, OrderType> const table = { 
+        std::unordered_map<std::string, OrderType> const orderTypeTable = { 
                                                                   {"GTC", OrderType::GoodTillCancel}
                                                                 , {"DAY", OrderType::GoodForDay}
                                                                 , {"FAK", OrderType::FillAndKill}
                                                                 , {"FOK", OrderType::FillOrKill}
                                                                 , {"MKT", OrderType::Market}
         };
-        auto it = table.find(SideReader);
-       
-  */     
-       // if(it != table.end()) { _price1 = it->second; };
+        auto orderTypeIterator = orderTypeTable.find(TimeInForceReader);   
+        if(orderTypeIterator != orderTypeTable.end()) { fileOrderType = orderTypeIterator->second; };     
+
+        OrderBook orders = sideLogic ? buyOrders : sellOrders; 
 
 
+        std::shared_ptr<Order> ptr (new Order(filePrice, fileQuantity, fileSide, fileOrderType));
 
 
-        // Side _price = static_cast<Side>(SideReader);
-        // OrderType _price = static_cast<Side>(TimeInForceReader);
+        orders.insert(std::make_pair(filePrice, ptr));
+
+        for(auto& d : orders)
+        {
+            std::cout << "First Value " << d.first << " Second Value " << d.second << '\n';
+        }
+
+   
+
         
-
-// using OrderPointer = std::shared_ptr<Order>;
-// using OrderPointers = std::list<OrderPointer>; 
-
-// std::map<double, OrderPointers> buyOrders; 
-// std::map<double, OrderPointers> sellOrders;
-
-
-        if(sideLogic)
-        {
-            buyOrders.insert(std::make_pair(_price, order));
-
-            for(auto& d : buyOrders)
-            {
-                std::cout << d.first << d.second;
-            }
-        }
-        else
-        {
-
-        }
-
-
-
     }
 
     inputFile.close();
@@ -132,23 +110,7 @@ int Orderbook::AddOrder(OrderPointer order, std::string_view file)
  */
 void Orderbook::CancelOrder(Order orderid)
 {
-   /*
-    auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
-        
-    for(auto& order : orders)
-    {
-        auto& orders_at_level = order.second;
 
-        auto it = std::find_if(orders_at_level.begin(), orders_at_level.end(),
-        [&](const auto& o) { return o->getOrderId() == orderid.getOrderId(); });
-        
-        if(it != orders_at_level.end())
-        {
-            orders_at_level.erase(it);
-            break;
-        }
-    }
-    */
 }
 
 
