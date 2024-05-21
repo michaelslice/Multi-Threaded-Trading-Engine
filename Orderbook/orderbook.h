@@ -32,12 +32,14 @@ class Orderbook
 {
 
 private:
-     // std::map<Price, OrderPointers, std::greater<Price>> buyOrders; sort the keys in ascending 
-     // std::map<Price, OrderPointers, std::less<Price>> sellOrders; sort the keys in descending
+    // std::map<Price, OrderPointers, std::greater<Price>> buyOrders; sort the keys in ascending 
+    // std::map<Price, OrderPointers, std::less<Price>> sellOrders; sort the keys in descending
 
+    // std::map<Price, OrderPointers> buyOrders; 
+    // std::map<Price, OrderPointers> sellOrders;
 
-    std::map<Price, OrderPointers> buyOrders; 
-    std::map<Price, OrderPointers> sellOrders;
+    std::map<Price , OrderPointer> buyOrders; 
+    std::map<Price , OrderPointer> sellOrders;
 
 
     std::vector<OrderId> orderIds;
@@ -69,7 +71,7 @@ public:
     void ValidForDay();
     
     // TODO NEED TO IMPLEMENT A BETTER SOLUTION
-    void AddOrder(OrderPointer order);
+    int AddOrder(OrderPointer order, std::string_view file);
     void CancelOrder(Order orderid);
     void ModifyOrder(OrderModify orderid);
 };

@@ -2,19 +2,20 @@
 #include <queue>
 #include <vector>
 #include <chrono>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <string_view>
+#include <iomanip>
+#include <map>
+
+
 
 #include "orderbook.h"
 #include "../CurrentTime/current_time.h"
 #include "../ModifyOrder/modifyorder.h"
 
 using namespace std;
-
-
-// using OrderPointer = std::shared_ptr<Order>;
-// using OrderPointers = std::list<OrderPointer>; 
-
-// std::map<double, OrderPointers> buyOrders; 
-// std::map<double, OrderPointers> sellOrders;
 
 /**
  *  The method AddOrder(OrderPointer order) is used to insert a order into the appropriate map for buy or sell orders.
@@ -26,14 +27,92 @@ using namespace std;
  *  @note The maps are organized by price(key), and a vector of orders(value).  
  *
  */
-void Orderbook::AddOrder(OrderPointer order)
-{
-   /*
-    auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
-    orders.emplace(order->getPrice(), order);
-    orderIds.insert(orderIds.begin(), order->getOrderId());
-*/
+
+// using OrderPointer = std::shared_ptr<Order>;
+// using OrderPointers = std::list<OrderPointer>; 
+
+// std::map<double, OrderPointers> buyOrders; 
+// std::map<double, OrderPointers> sellOrders;
+
+
+int Orderbook::AddOrder(OrderPointer order, std::string_view file)
+{
+    auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
+    
+    std::ifstream inputFile(static_cast<std::string>(file));
+    std::string SideReader;
+    std::string TimeInForceReader;
+    std::string PriceReader;
+    std::string QuantityReader;
+    std::string line;
+    
+    if(!inputFile.is_open())
+    {
+        std::cout << "Error opening file";
+        return 0;
+    }
+
+    while (std::getline(inputFile, line))
+    {
+        std::istringstream iss(line);
+
+        iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader;
+
+        bool sideLogic = SideReader == "B" ? sideLogic = true : sideLogic = false; 
+
+        Price _price = std::stoi(PriceReader);
+        Quantity _quantity = std::stoi(QuantityReader);
+        Side price_;
+
+        std::unordered_map<std::string, Side> const table = { {"B", Side::Buy}, {"S", Side::Sell} };
+        auto it = table.find(SideReader);
+        if(it != table.end()) { price_ = it->second; };
+
+        std::unordered_map<std::string, OrderType> const table = { 
+                                                                  {"GTC", OrderType::GoodTillCancel}
+                                                                , {"DAY", OrderType::GoodForDay}
+                                                                , {"FOC", OrderType::}
+                                                                , {"FOK", OrderType::FillOrKill}
+                                                                , {"MKT", OrderType::Market}
+        };
+        auto it = table.find(SideReader);
+        if(it != table.end()) { _price1 = it->second; };
+
+
+
+
+        // Side _price = static_cast<Side>(SideReader);
+        // OrderType _price = static_cast<Side>(TimeInForceReader);
+        
+
+// using OrderPointer = std::shared_ptr<Order>;
+// using OrderPointers = std::list<OrderPointer>; 
+
+// std::map<double, OrderPointers> buyOrders; 
+// std::map<double, OrderPointers> sellOrders;
+
+
+        if(sideLogic)
+        {
+            buyOrders.insert(std::make_pair(_price, order));
+
+            for(auto& d : buyOrders)
+            {
+                std::cout << d.first << d.second;
+            }
+        }
+        else
+        {
+
+        }
+
+
+
+    }
+
+    inputFile.close();
+    return 0;
 }
 
 

@@ -71,6 +71,16 @@ public:
     {};
 
 
+    // If order is added from file use this constructor
+    Order(Price _price, Quantity _quantity, Side _orderside, OrderType _ordertype)
+        : price(_price)
+        , orderside(_orderside)
+        // , orderid(_orderid)
+        , ordertype(_ordertype)
+        , initialQuantity(_quantity)
+        , remainingQuantity(_quantity) 
+    {};
+
 
     Price getPrice() const { return price; };
     Side getSide() const { return orderside; };
@@ -78,6 +88,9 @@ public:
     Time getTimestamp() const { return timestamp; };
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
+
+
+
 
     Quantity getQuantity() const { return initialQuantity; };
     Quantity getRemainingQuantity() const { return remainingQuantity; };
