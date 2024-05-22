@@ -9,9 +9,7 @@
 
 
 /**
- *  The method readFile(const std::string& file) is used to read orders from a file, and display their contents
- *
- *  @param const Order& order : A const reference to a existing order
+ *  The method readFile(std::string_view file) is used to read orders from a file, and display their contents
  *
  *  @return int : Return wether there was error or not
  *

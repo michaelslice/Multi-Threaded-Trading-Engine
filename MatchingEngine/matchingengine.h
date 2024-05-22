@@ -6,21 +6,14 @@
 
 
 
-
-/**
- *  The class that will facilate the logic for executing trades between buyers and sellers
- * 
- * 
-
-
 class MatchingEngine
 {
 private:
 public:
-    MatchingEngine(PriveLevelMap buyOrders, PriveLevelMap sellOrders);
+    MatchingEngine(std::map<Price, OrderPointer> buyOrders, std::map<Price, OrderPointer> sellOrders);
     void ExecuteTrade();
 };
 
-*/
+
 
 #endif

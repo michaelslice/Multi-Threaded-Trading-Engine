@@ -9,23 +9,18 @@
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
-#include "../Order/order.h"
 
+#include "../Order/order.h"
 #include "../OrderId/orderid.h"
 #include "../ModifyOrder/modifyorder.h"
 #include "../Using/using.h"
-
-using PriceLevelMap = std::map<double, OrderPointers>; 
 
 class Orderbook
 {
 
 private:
-    // std::map<Price, OrderPointers, std::greater<Price>> buyOrders; sort the keys in ascending 
-    // std::map<Price, OrderPointers, std::less<Price>> sellOrders; sort the keys in descending
-
-    std::map<Price , OrderPointer> buyOrders; 
-    std::map<Price , OrderPointer> sellOrders;
+    std::map<Price, OrderPointer> buyOrders; 
+    std::map<Price, OrderPointer> sellOrders;
 
     std::vector<OrderId> orderIds;
 
@@ -43,11 +38,9 @@ public:
     ~Orderbook() { };    
     
     void ValidForDay();
-    
-
     int AddOrder(std::string_view file);
-    void CancelOrder(OrderPointer orderid);
-    void ModifyOrder(OrderPointer orderid);
+    void CancelOrder(OrderPointer order);
+    void ModifyOrder(OrderPointer order);
 };
 
 #endif
