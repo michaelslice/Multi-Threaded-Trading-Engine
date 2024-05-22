@@ -19,18 +19,23 @@ private:
     Side _side;
     OrderId _orderid;
 public:
-    
     Price getPrice() const { return _price; };
     Side getSide() const { return _side; };
     OrderId getOrderId() const { return _orderid; };
     Quantity getQuantity() const { return _quantity; };
-/*
 
-    auto ModifyAOrder() const
+    OrderModify(Price __price, Quantity __quantity, Side __side, OrderId __orderid)
+        : _price(__price)
+        , _quantity(__quantity)
+        , _side(__side)
+        , _orderid(__orderid) 
+    { };
+
+    OrderPointer ModifyAOrder(OrderModify order) const
     {
-       // return std::make_shared<Order>(getPrice(), getQuantity(), getSide(), getOrderId());
+       return std::make_shared<Order>(getPrice(), getQuantity(), getSide(), getOrderId());
     };
-*/
+
 };
 
 #endif

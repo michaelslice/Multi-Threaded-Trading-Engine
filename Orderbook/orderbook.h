@@ -14,17 +14,6 @@
 #include "../OrderId/orderid.h"
 #include "../ModifyOrder/modifyorder.h"
 #include "../Using/using.h"
-/**
- *  The class that will facilate the logic for buyers and sellers to submit trades
- * 
- * 
-*/
-
-// Placing the price as the key allows for orders to be organized by price level
-// Price is the index, Key is vector of orders
-
-// using OrderPointer = std::shared_ptr<Order>;
-// using OrderPointers = std::list<OrderPointer>; 
 
 using PriceLevelMap = std::map<double, OrderPointers>; 
 
@@ -35,12 +24,8 @@ private:
     // std::map<Price, OrderPointers, std::greater<Price>> buyOrders; sort the keys in ascending 
     // std::map<Price, OrderPointers, std::less<Price>> sellOrders; sort the keys in descending
 
-    // std::map<Price, OrderPointers> buyOrders; 
-    // std::map<Price, OrderPointers> sellOrders;
-
     std::map<Price , OrderPointer> buyOrders; 
     std::map<Price , OrderPointer> sellOrders;
-
 
     std::vector<OrderId> orderIds;
 
@@ -48,19 +33,8 @@ private:
     std::thread orderThread;
     std::condition_variable shutdownConditionVariable_;
     std::atomic<bool> shutdown_{ false };
-
-
 public:
     Orderbook() = default;
-    
-    /*
-    Orderbook(PriceLevelMap _buyOrders, PriceLevelMap _sellOrders)
-    : buyOrders(_buyOrders)
-    , sellOrders(_sellOrders)
-    {};
-    */
-
-
     // If the compiler matches a function call to any of the following, generate a compilation error 
     Orderbook(const Orderbook& other) = delete; // Copy constructor
     Orderbook& operator=(const Orderbook& other) = delete; // Copy assignment operator
@@ -70,14 +44,10 @@ public:
     
     void ValidForDay();
     
-    // TODO NEED TO IMPLEMENT A BETTER SOLUTION
-    
-    // int AddOrder(OrderPointer order, std::string_view file);
-    int AddOrder(std::string_view file);
-    
-    void CancelOrder(OrderPointer orderid);
-    void ModifyOrder(OrderModify orderid);
-};
 
+    int AddOrder(std::string_view file);
+    void CancelOrder(OrderPointer orderid);
+    void ModifyOrder(OrderPointer orderid);
+};
 
 #endif

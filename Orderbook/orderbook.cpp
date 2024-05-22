@@ -16,12 +16,12 @@
 using namespace std;
 
 /**
- *  The method AddOrder(std::string_view file) reads orders from a file, and based off the 
- *  side of the order Bid or Ask, it will be mapped to BuyOrders, or SellOrders.
+ *  The method AddOrder(std::string_view file) reads orders from a file, and will
+ *  be added to the BuyOrders, or SellOrders map.
  *
  *  @param const std::string_view file : A file that contains orders
  *
- *  @return int : Will return if 
+ *  @return int 
  *
  *  @note The maps are organized by price(key), and a vector of orders(value).  
  *
@@ -119,11 +119,7 @@ void Orderbook::CancelOrder(OrderPointer orderid)
             break;
         }
     }
-
-    if(ans == false)
-    {
-        throw std::logic_error("Error: The requested order to remove does not exist in the OrderBook");
-    }
+    if(ans == false) { throw std::logic_error("Error: The requested order to remove does not exist in the OrderBook"); }
     
     for(auto& d : orders)
     {
@@ -133,20 +129,37 @@ void Orderbook::CancelOrder(OrderPointer orderid)
 
 
 /**
- *  The method ModifyOrder(Order orderid) is used to allow a user to modify an existing orders
- *  OrderType, Price, Quantity, and OrderType
+ *  The method 
  *
- *  @param const Order orderid : A const reference to a existing order
+ *  @param 
  *
  *  @return void
  *
- *  @note The method will allow the user to change 
+ *  @note
  *  
  */
-void Orderbook::ModifyOrder(OrderModify orderid)
+void Orderbook::ModifyOrder(OrderPointer orderid)
 {
-    auto& orders = (orderid.getSide() == Side::Buy) ? buyOrders : sellOrders; 
+    auto& orders = (orderid->getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
+    for(auto it = orders.begin(); it != orders.end(); ++it)
+    {
+        if(it->second->getOrderId() == orderid->getOrderId())
+        {
+            std::cout << "TESTasdasd" << '\n';
+
+            orders.erase(it);
+            orders.insert(std::make_pair(orderid->getPrice(), orderid));
+        
+        }
+    }
+
+    for(auto& d : orders)
+    {
+     std::cout << "Test modify func " << '\n';
+     std::cout << "Price " << d.first << " Second value " << d.second->getQuantity() << '\n';
+       
+    }
 }
 
 

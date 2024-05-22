@@ -60,7 +60,7 @@ public:
         , remainingQuantity(_quantity) 
     {};
 
-    // If a order is modifed use this constructor
+    // If a order is modifed during trade this constructor should be used
     Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid)
         : price(_price)
         , orderside(_orderside)
@@ -69,7 +69,7 @@ public:
         , remainingQuantity(_quantity) 
     {};
 
-    // If order is added from file use this constructor
+    // If order is added from a file this constructor should be used
     Order(Price _price, Quantity _quantity, Side _orderside, OrderType _ordertype, OrderId _orderid)
         : price(_price)
         , orderside(_orderside)
@@ -85,6 +85,12 @@ public:
     Time getTimestamp() const { return timestamp; };
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
+
+
+
+
+
+
 
     Quantity getQuantity() const { return initialQuantity; };
     Quantity getRemainingQuantity() const { return remainingQuantity; };
