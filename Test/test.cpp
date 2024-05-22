@@ -25,6 +25,7 @@ int Test::readFile(std::string_view file)
     std::string TimeInForceReader;
     std::string PriceReader;
     std::string QuantityReader;
+    std::string OrderNumberReader;
 
     if(!inputFile.is_open())
     {
@@ -38,18 +39,19 @@ int Test::readFile(std::string_view file)
     << "Side" << std::right << std::setw(16) << std::setfill(' ') 
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
-    << "Price" << '\n';
+    << "Price" << std::right << std::setw(12) << std::setfill(' ') 
+    << "OrderId" <<'\n';
 
     while (std::getline(inputFile, line))
     {
         std::istringstream iss(line);
 
-        iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader;
+        iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader >> OrderNumberReader;
 
         std::cout << std::setw(9) << std::left << SideReader
                   << std::setw(17) << std::left << TimeInForceReader
                   << std::setw(13) << std::left << PriceReader
-                  << QuantityReader << '\n';
+                  << std::setw(10) << std::left << QuantityReader << OrderNumberReader <<'\n';
     }
 
     inputFile.close();

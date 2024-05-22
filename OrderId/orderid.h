@@ -2,6 +2,8 @@
 #define ORDERID_H
 #include <iostream>
 
+/*
+
 class OrderId
 {
     friend bool operator==(const OrderId&, const OrderId&);
@@ -11,5 +13,7 @@ private:
 public:
     void get_OrderId();
 };
+
+*/
 
 #endif

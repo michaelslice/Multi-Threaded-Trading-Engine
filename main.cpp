@@ -24,7 +24,16 @@ int main()
 
   Orderbook book;
 
+  Price p = 120;
+  Quantity q = 50;
+  Side s= Side::Buy;
+  OrderType ot = OrderType::GoodTillCancel;
+  OrderId oi = 1;
+
+  OrderPointer ptr (new Order(p, q, s, ot, oi));
+
   book.AddOrder("orders.txt");
+  book.CancelOrder(ptr);
 
   return 0;
 }

@@ -5,6 +5,7 @@
 
 #include "orderid.h"
 
+/*
 
 void OrderId::get_OrderId()
 {
@@ -19,3 +20,5 @@ bool operator==(const OrderId& lhs, const OrderId& rhs)
 {
     return lhs.OrderId == rhs.OrderId;
 }
+
+*/

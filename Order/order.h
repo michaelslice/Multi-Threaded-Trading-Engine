@@ -48,7 +48,6 @@ private:
 
     Quantity initialQuantity;
     Quantity remainingQuantity;
-    
 public:
     Order(Price _price, Quantity _quantity, Side _orderside, OrderId _orderid, Time _timestamp, OrderStatus _orderstatus, OrderType _ordertype)
         : price(_price)
@@ -70,17 +69,15 @@ public:
         , remainingQuantity(_quantity) 
     {};
 
-
     // If order is added from file use this constructor
-    Order(Price _price, Quantity _quantity, Side _orderside, OrderType _ordertype)
+    Order(Price _price, Quantity _quantity, Side _orderside, OrderType _ordertype, OrderId _orderid)
         : price(_price)
         , orderside(_orderside)
-        // , orderid(_orderid)
+        , orderid(_orderid)
         , ordertype(_ordertype)
         , initialQuantity(_quantity)
         , remainingQuantity(_quantity) 
     {};
-
 
     Price getPrice() const { return price; };
     Side getSide() const { return orderside; };
@@ -89,17 +86,13 @@ public:
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
 
-
-
-
     Quantity getQuantity() const { return initialQuantity; };
     Quantity getRemainingQuantity() const { return remainingQuantity; };
     Quantity getFilledQuantity() const { return getFilledQuantity() - getRemainingQuantity(); };
 };
 
 using OrderPointer = std::shared_ptr<Order>;
-using OrderPointers = std::list<OrderPointer>; // Doubly linked list of Order objects
-
+using OrderPointers = std::list<OrderPointer>; 
 using OrderIds = std::vector<OrderId>;
 
 #endif

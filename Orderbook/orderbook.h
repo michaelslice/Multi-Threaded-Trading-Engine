@@ -13,7 +13,7 @@
 
 #include "../OrderId/orderid.h"
 #include "../ModifyOrder/modifyorder.h"
-
+#include "../Using/using.h"
 /**
  *  The class that will facilate the logic for buyers and sellers to submit trades
  * 
@@ -75,7 +75,7 @@ public:
     // int AddOrder(OrderPointer order, std::string_view file);
     int AddOrder(std::string_view file);
     
-    void CancelOrder(Order orderid);
+    void CancelOrder(OrderPointer orderid);
     void ModifyOrder(OrderModify orderid);
 };
 
