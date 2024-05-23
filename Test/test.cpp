@@ -172,7 +172,7 @@ void Test::printFilledBuyOrders(std::map<Price, OrderPointer>::iterator buyIter)
 {
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
     std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
-    std::cout << "* " << getOrderSide(buyIter->second->getSide()) << std::setw(16) << std::right << buyIter->first << std::setw(16) << std::right << buyIter->second->getQuantity() << std::setw(12) << std::right << buyIter->second->getOrderId() << " *"; 
+    std::cout << "* " << getOrderSide(buyIter->second->getSide()) << std::setw(16) << std::right << buyIter->first << std::setw(15) << std::right << buyIter->second->getQuantity() << std::setw(13) << std::right << buyIter->second->getOrderId() << " *"; 
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
 }
 
@@ -189,6 +189,6 @@ void Test::printFilledSellOrders(std::reverse_iterator<std::conditional<false, s
 {
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
     std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
-    std::cout << "* " << getOrderSide(sellIter->second->getSide()) << std::setw(16) << std::right << sellIter->first << std::setw(16) << std::right << sellIter->second->getQuantity() << std::setw(12) << std::right << sellIter->second->getOrderId() << " *"; 
+    std::cout << "* " << getOrderSide(sellIter->second->getSide()) << std::setw(15) << std::right << sellIter->first << std::setw(15) << std::right << sellIter->second->getQuantity() << std::setw(13) << std::right << sellIter->second->getOrderId() << " *"; 
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
 }

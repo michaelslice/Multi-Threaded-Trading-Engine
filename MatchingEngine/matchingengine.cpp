@@ -28,7 +28,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
         {
             if(buyOrders.size() == 0 || sellOrders.size() == 0) 
             {
-                std::cout << "Size of buyOrders " << buyOrders.size() << '\n';
+                std::cout << '\n' << "Size of buyOrders " << buyOrders.size() << '\n';
                 std::cout << "Size of sellOrders " << sellOrders.size() << '\n';
                 
                 if(buyOrders.size() == 0) { std::cout << "Error no more buy orders" << '\n'; } else { std::cout << "Error no more sell orders" << '\n'; };
@@ -40,11 +40,11 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
 
             if(sellIter->second->getPrice() <= buyIter->second->getPrice())
             {         
+                test.printFilledBuyOrders(buyIter);
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto buyRemainingQuantity = buyIter->second->setTradeQuantity(minQuantity);
                 auto sellRemainingQuantity = sellIter->second->setTradeQuantity(minQuantity);
-                test.printFilledBuyOrders(buyIter);
-                
+         
                 if(buyRemainingQuantity == 0)
                 {
                     buyOrders.erase(buyIter);
@@ -56,11 +56,11 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             }
             else 
             {
+                test.printFilledSellOrders(sellIter);
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto buyRemainingQuantity = buyIter->second->setTradeQuantity(minQuantity);
                 auto sellRemainingQuantity = sellIter->second->setTradeQuantity(minQuantity);
-                test.printFilledSellOrders(sellIter);
-       
+                
                 if(buyRemainingQuantity == 0)
                 {
                     buyOrders.erase(buyIter);
