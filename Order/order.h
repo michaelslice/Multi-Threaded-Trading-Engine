@@ -37,9 +37,7 @@
 
 class Order
 {
- friend std::ostream& operator<<(std::ostream& os, const Order& obj);
-
-
+    friend std::ostream& operator<<(std::ostream& os, const Order& obj);
 private:
     Price price;
     Side orderside; 
@@ -47,7 +45,6 @@ private:
     Time timestamp;
     OrderStatus orderstatus;
     OrderType ordertype;
-
     Quantity initialQuantity;
     Quantity remainingQuantity;
 public:
@@ -87,29 +84,14 @@ public:
     Time getTimestamp() const { return timestamp; };
     OrderStatus getOrderStatus() const { return orderstatus; };
     OrderType getOrderType() const { return ordertype; };
-
-
-    Quantity setTradeQuantity(Quantity buy) 
-    { 
-        initialQuantity -= buy;
-
-        return initialQuantity;
-    
-    };
-
-
-
-
     Quantity getQuantity() const { return initialQuantity; };
     Quantity getRemainingQuantity() const { return remainingQuantity; };
     Quantity getFilledQuantity() const { return getFilledQuantity() - getRemainingQuantity(); };
+    Quantity setTradeQuantity(Quantity buy) { initialQuantity -= buy; return initialQuantity; };
 };
 
 using OrderPointer = std::shared_ptr<Order>;
 using OrderPointers = std::list<OrderPointer>; 
 using OrderIds = std::vector<OrderId>;
-
-
-
 
 #endif

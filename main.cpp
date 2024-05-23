@@ -5,28 +5,9 @@
 #include "CurrentTime/current_time.h"
 #include "Orderbook/orderbook.h"
 #include "Test/test.h"
-
-
 #include "MatchingEngine/matchingengine.h"
 
-using namespace std;
-
-int main()
-{
-  // Time time;
-  // Orderbook orderbook;
-  //orderbook.ValidForDay();
-
-
-  Test test;
-
-  std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
-  test.readFile("orders.txt");
-
-
-  Orderbook book;
-
-  /*
+/*
   Price p = 120;
   Quantity q = 50;
   Side s= Side::Buy;
@@ -49,6 +30,15 @@ int main()
   book.ModifyOrder(ptr1);
 */
 
+int main()
+{
+  // Do some work
+
+  Test test;
+  std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
+  test.readFile("orders.txt");
+
+  Orderbook book;
   book.AddOrder("orders.txt");
   book.ValidForDay();
 

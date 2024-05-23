@@ -1,6 +1,5 @@
 #ifndef ORDERTYPE_H
 #define ORDERTYPE_H
-
 #include <iostream>
 #include <string_view>
 

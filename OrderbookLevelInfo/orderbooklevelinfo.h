@@ -1,32 +1,21 @@
 #ifndef ORDERBOOKINFO_H
 #define ORDERBOOKINFO_H
 #include <iostream>
-
-//#include "../OrderbookLevel/orderbooklevel.h"
-
-// Show info regarding a trade info
-
-
-/*
+#include "../Using/using.h"
 
 class OrderbookLevelInfo
 {
 private:
-    OrderbookLevel bids;
-    OrderbookLevel asks;
+    Price bids;
+    Price asks;
 public:
-    OrderbookLevelInfo(const OrderbookLevel& bids_, const OrderbookLevel& asks_)
+    OrderbookLevelInfo(const Price& bids_, const Price& asks_)
         : bids(bids_)
         , asks(asks_)
     {};
 
-    const OrderbookLevel& getBids() const { return bids; };
-    const OrderbookLevel& getAsks() const { return asks; };
-
+    const Price& getBids() const { return bids; };
+    const Price& getAsks() const { return asks; };
 };
-
-
-*/
-
 
 #endif

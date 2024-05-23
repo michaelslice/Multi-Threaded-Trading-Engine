@@ -4,8 +4,6 @@
 
 #include "../TradeInfo/tradeinfo.h"
 
-// Show info regarding a trade info
-
 class Trade
 {
 private:
@@ -13,7 +11,6 @@ private:
     TradeInfo bidAsk;
 public:
     Trade() = default;
-    
     Trade(const TradeInfo& bidTrade_, const TradeInfo& bidAsk_)
         : bidTrade(bidTrade_)
         , bidAsk(bidAsk_)
@@ -21,7 +18,6 @@ public:
 
     const TradeInfo& getbidTrade() const { return bidTrade; };
     const TradeInfo& getbidAsk() const { return bidAsk; };
-
 };
 
 #endif

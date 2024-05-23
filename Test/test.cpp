@@ -6,12 +6,12 @@
 #include <iomanip>
 #include <string_view>
 
-
 #include "test.h"
 #include "../Orderbook/orderbook.h"
 #include "../CurrentTime/current_time.h"
 #include "../ModifyOrder/modifyorder.h"
 #include "../MatchingEngine/matchingengine.h"
+#include "../Order/order.h" 
 
 /**
  *  The method readFile(std::string_view file) is used to read orders from a file, and display their contents
@@ -42,8 +42,8 @@ int Test::readFile(std::string_view file)
     << "Side" << std::right << std::setw(16) << std::setfill(' ') 
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
-    << "Price" << std::right << std::setw(12) << std::setfill(' ') 
-    << "OrderId" <<'\n';
+    << "Price" << std::right << std::setw(7) << std::setfill(' ') 
+    << "Id" <<'\n';
 
     while (std::getline(inputFile, line))
     {
@@ -61,28 +61,39 @@ int Test::readFile(std::string_view file)
     return 0;
 }
 
+
+/**
+ *  The method printOrderbook will print the orders stored in the buyOrders map, and sellOrders map
+ *
+ *  @param std::map<Price, OrderPointer>& _buyOrders : Map of all the buyOrders
+ * 
+ *  @param std::map<Price, OrderPointer>& _sellOrders : Map of all the sellOrders
+ * 
+ *  @return void
+ *
+ */
 void Test::printOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders)
 {
     std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "BUY ORDERS" << '\n' << '\n'
     << "Side" << std::right << std::setw(16) << std::setfill(' ') 
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
-    << "Price" << std::right << std::setw(12) << std::setfill(' ') 
-    << "OrderId" <<'\n';
-    for(auto& d : _buyOrders)
+    << "Price" << std::right << std::setw(7) << std::setfill(' ') 
+    << "Id" <<'\n';
+    for(auto& order : _buyOrders)
     {
-        std::cout << std::setw(9) << std::left << getOrderSide(d.second->getSide())
-            << std::setw(17) << std::left << getOrderTypeName(d.second->getOrderType())
-            << std::setw(13) << std::left << d.first 
-            << std::setw(10) << std::left << d.second->getQuantity()  <<d.second->getOrderId() <<'\n';
+        std::cout << std::setw(9) << std::left << getOrderSide(order.second->getSide())
+            << std::setw(17) << std::left << getOrderTypeName(order.second->getOrderType())
+            << std::setw(13) << std::left << order.first 
+            << std::setw(10) << std::left << order.second->getQuantity()  <<order.second->getOrderId() <<'\n';
     }
 
     std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "SELL ORDERS" << '\n' << '\n'
     << "Side" << std::right << std::setw(16) << std::setfill(' ') 
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
-    << "Price" << std::right << std::setw(12) << std::setfill(' ') 
-    << "OrderId" <<'\n';
+    << "Price" << std::right << std::setw(7) << std::setfill(' ') 
+    << "Id" <<'\n';
     for(auto& d : _sellOrders)
     {
         std::cout << std::setw(9) << std::left << getOrderSide(d.second->getSide())
@@ -92,6 +103,17 @@ void Test::printOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Pr
     }
 }
 
+
+/**
+ *  The method printRemainingOrderbook is used to print the results of the remaining orders within the Orderbook
+ *
+ *  @param std::map<Price, OrderPointer>& _buyOrders : Map of all the buyOrders
+ * 
+ *  @param std::map<Price, OrderPointer>& _sellOrders : Map of all the sellOrders
+ * 
+ *  @return void
+ *
+ */
 void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders)
 {
     if(_buyOrders.size() == 0)
@@ -106,12 +128,12 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
         << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
         << "Price" << std::right << std::setw(12) << std::setfill(' ') 
         << "OrderId" <<'\n';
-        for(auto& d : _buyOrders)
+        for(auto& order : _buyOrders)
         {
-            std::cout << std::setw(9) << std::left << getOrderSide(d.second->getSide())
-                << std::setw(17) << std::left << getOrderTypeName(d.second->getOrderType())
-                << std::setw(13) << std::left << d.first 
-                << std::setw(10) << std::left << d.second->getQuantity()  <<d.second->getOrderId() <<'\n';
+            std::cout << std::setw(9) << std::left << getOrderSide(order.second->getSide())
+                << std::setw(17) << std::left << getOrderTypeName(order.second->getOrderType())
+                << std::setw(13) << std::left << order.first 
+                << std::setw(10) << std::left << order.second->getQuantity()  <<order.second->getOrderId() <<'\n';
         }
     }
     
@@ -135,4 +157,38 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
                 << std::setw(10) << std::left << d.second->getQuantity()  <<d.second->getOrderId() <<'\n';
         }
     }
+}
+
+
+/**
+ *  The method printFilledBuyOrders will print the result of a trade that is initiated from the buy side(aggressive order)
+ *
+ *  @param std::map<Price, OrderPointer>::iterator buyIter :: A iterator of the buySide
+ * 
+ *  @return void
+ *
+ */
+void Test::printFilledBuyOrders(std::map<Price, OrderPointer>::iterator buyIter)
+{
+    std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
+    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
+    std::cout << "* " << getOrderSide(buyIter->second->getSide()) << std::setw(16) << std::right << buyIter->first << std::setw(16) << std::right << buyIter->second->getQuantity() << std::setw(12) << std::right << buyIter->second->getOrderId() << " *"; 
+    std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
+}
+
+
+/**
+ *  The method printFilledSellOrders will print the result of a trade that is initiated from the sell side(passive order)
+ *
+ *  @param sstd::reverse_iterator<std::conditional<false, std::map<Price, OrderPointer>::const_iterator, std::_Rb_tree_iterator<std::pair<const Price, OrderPointer>>>::type> : Reverse iterator
+ * 
+ *  @return void
+ *
+ */
+void Test::printFilledSellOrders(std::reverse_iterator<std::conditional<false, std::map<Price, OrderPointer>::const_iterator, std::_Rb_tree_iterator<std::pair<const Price, OrderPointer>>>::type> sellIter)
+{
+    std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
+    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
+    std::cout << "* " << getOrderSide(sellIter->second->getSide()) << std::setw(16) << std::right << sellIter->first << std::setw(16) << std::right << sellIter->second->getQuantity() << std::setw(12) << std::right << sellIter->second->getOrderId() << " *"; 
+    std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
 }

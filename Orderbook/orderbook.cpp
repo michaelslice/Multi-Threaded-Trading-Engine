@@ -115,14 +115,8 @@ void Orderbook::CancelOrder(OrderPointer order)
             break;
         }
     }
+
     if(validId == false) { throw std::logic_error("Error: The requested order to remove does not exist in the OrderBook"); }
-    
-    /*
-    for(auto& d : orders)
-    {
-        std::cout << "First Value " << d.first << " Second Value " << d.second->getQuantity() << '\n';
-    }
-    */
 }
 
 
@@ -152,13 +146,6 @@ void Orderbook::ModifyOrder(OrderPointer order)
             orders.erase(it);
             orders.insert(std::make_pair(order->getPrice(), order));
         }
-    }
-
-    for(auto& d : orders)
-    {
-     std::cout << "Test modify func " << '\n';
-     std::cout << "Price " << d.first << " Second value " << d.second->getQuantity() << '\n';
-       
     }
 }
 

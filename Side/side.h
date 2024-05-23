@@ -1,13 +1,12 @@
 #ifndef SIDE_H
 #define SIDE_H
-
 #include <iostream>
 #include <string_view>
 
 enum class Side
 {
-    Buy,
-    Sell,
+  Buy,
+  Sell,
 };
 
 constexpr std::string_view getOrderSide(Side ordertype)
@@ -19,6 +18,5 @@ constexpr std::string_view getOrderSide(Side ordertype)
 		default:    return "???";
     }
 };
-
 
 #endif
