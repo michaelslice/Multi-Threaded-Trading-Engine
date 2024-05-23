@@ -1,21 +1,15 @@
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 
 #include "matchingengine.h"
 #include "../Test/test.h"
-
-
-//    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
-//    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
-
-//  buyOrders.erase(buyIter);
-// sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
-
+#include "../Trade/trade.h" 
 
 
 MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::map<Price, OrderPointer>& sellOrders)
 {
-    std::cout << '\n' << "TESTING MATCHING ENGINE" << '\n';
+    std::cout << '\n' << "TESTING MATCHING ENGINE" << '\n' << '\n';
     
     while(!buyOrders.empty())
     {
@@ -33,72 +27,60 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             auto buyIter = buyOrders.begin();
             auto sellIter = sellOrders.rbegin();
 
-            // If the bid is aggressive
             if(sellIter->second->getPrice() <= buyIter->second->getPrice())
-            {
-                std::cout << "TEST AGGRESSIVE ORDER" << '\n';
+            {         
+                std::cout << "AGGRESSIVE ORDER" << '\n';
 
-                auto ans = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity() );
-                std::cout << "MIN VALUE " <<  ans << '\n';
-                buyIter->second->getQuantity()& - ans;
-                sellIter->second->getQuantity()& - ans;
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
 
-    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
-    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
-
-
-                if(buyIter->second->getQuantity() == 0)
+                int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
+                auto b = buyIter->second->setTradeQuantity(minQuantity);
+                auto s = sellIter->second->setTradeQuantity(minQuantity);
+ 
+                if(b == 0)
                 {
-                  
-                  std::cout << "buy filled" << '\n';
+                    std::cout << "Sell filled" << '\n';
                     buyOrders.erase(buyIter);
                 }
-                else if(  sellIter->second->getQuantity() == 0)
+                else if(s == 0)
                 {
-                   std::cout << "sell filled" << '\n';
-                   
+                    std::cout << "Sell filled" << '\n';
                     sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
                 }
             }
-            // If bid is passive
             else 
             {
-                std::cout << "TEST PASSIVE ORDER" << '\n';
+                std::cout << "PASSIVE ORDER" << '\n';
                 
-                auto ans = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity() );
-                std::cout << "MIN VALUE " <<  ans << '\n';
-                buyIter->second->getQuantity()& - ans;
-                sellIter->second->getQuantity()& - ans;
-                
-    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
-    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
 
+                int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
+                auto b = buyIter->second->setTradeQuantity(minQuantity);
+                auto s = sellIter->second->setTradeQuantity(minQuantity);
 
-
-                if(buyIter->second->getQuantity() == 0)
+ 
+                if(b == 0)
                 {
-                  
-                  std::cout << "buy filled" << '\n';
+                    std::cout << "Buy filled" << '\n';
                     buyOrders.erase(buyIter);
                 }
-                else if(  sellIter->second->getQuantity() == 0)
+                else if(s == 0)
                 {
-                   std::cout << "sell filled" << '\n';
-                   
+                    std::cout << "Sell filled" << '\n';
                     sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
                 }
             }
             
-            buyOrders.erase(buyIter);
-            sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
-
-
-
+            // buyOrders.erase(buyIter);
+            // sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
             buyIter++;
             sellIter++;
         }
     }
-    std::cout << "Trading Session Completed" << '\n';
+    
+    std::cout << '\n' << "Trading Session Completed" << '\n';
 
     Test test;
     test.printRemainingOrderbook(buyOrders, sellOrders);

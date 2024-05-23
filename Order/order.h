@@ -89,7 +89,13 @@ public:
     OrderType getOrderType() const { return ordertype; };
 
 
+    Quantity setTradeQuantity(Quantity buy) 
+    { 
+        initialQuantity -= buy;
 
+        return initialQuantity;
+    
+    };
 
 
 

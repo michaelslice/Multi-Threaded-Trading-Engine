@@ -12,6 +12,8 @@ private:
     TradeInfo bidTrade;
     TradeInfo bidAsk;
 public:
+    Trade() = default;
+    
     Trade(const TradeInfo& bidTrade_, const TradeInfo& bidAsk_)
         : bidTrade(bidTrade_)
         , bidAsk(bidAsk_)
