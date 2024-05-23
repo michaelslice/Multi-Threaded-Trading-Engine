@@ -12,8 +12,8 @@
 #include "orderbook.h"
 #include "../CurrentTime/current_time.h"
 #include "../ModifyOrder/modifyorder.h"
-
 #include "../MatchingEngine/matchingengine.h"
+#include "../Test/test.h"
 
 using namespace std;
 using OrderBook = std::map<Price, OrderPointer>;
@@ -81,27 +81,8 @@ int Orderbook::AddOrder(std::string_view file)
         orders.insert(std::make_pair(filePrice, ptr));        
     }
 
-    std::cout << '\n' << "BUY ORDERS" << '\n'; 
-    for(auto& d : buyOrders)
-    {
-        std::cout << "First Value Price " << d.first 
-        << " Second Value Quantity " 
-        << d.second->getQuantity() 
-        << " ID " 
-        << d.second->getOrderId()
-        << '\n';
-    }
-
-    std::cout << '\n' << "SELL ORDERS" << '\n'; 
-    for(auto& d : sellOrders)
-    {
-        std::cout << "First Value Price " << d.first 
-        << " Second Value Quantity " 
-        << d.second->getQuantity() 
-        << " ID " 
-        << d.second->getOrderId()
-        << '\n';
-    }
+    Test test;
+    test.printOrderbook(buyOrders, sellOrders);
 
     inputFile.close();
     return 0;
@@ -183,43 +164,34 @@ void Orderbook::ModifyOrder(OrderPointer order)
 
 
 /**
- *  The method 
+ *  The method ClearBook is used to erase all orders from both sides of the Orderbook
  *  
+ *  @param std::map<Price, OrderPointer>& _buyOrders : Buy side of Orderbook 
  *
- *  @param const 
- *
- *  @return void
- *
- *  @note 
+ *  @param std::map<Price, OrderPointer>& _sellOrders : Sell side of Orderbook
+ *  
+ * @return void
  *  
  */
-
-// void Orderbook::ClearBook(std::map<Price, OrderPointer>& orderbook)
-
 void Orderbook::ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders)
 {
-    for(auto it = _buyOrders.begin(); it != _buyOrders.end(); ++it)
+    for(auto buyIter = _buyOrders.begin(); buyIter != _buyOrders.end(); ++buyIter)
     {
-        _buyOrders.erase(it);
+        _buyOrders.erase(buyIter);
     }
-        for(auto it1 = _sellOrders.begin(); it1 != _sellOrders.end(); ++it1)
+        for(auto sellIter = _sellOrders.begin(); sellIter != _sellOrders.end(); ++sellIter)
     {
-        _sellOrders.erase(it1);
+        _sellOrders.erase(sellIter);
     }
 }
 
 
-
-
 /**
- *  The method Orderbook
+ *  The method Orderbook getOrderBookSize returns the size of the passed in Orderbook
  *  
- *
- *  @param const 
+ *  @param std::map<Price, OrderPointer>& orderbook : One side of the Orderbook
  *
  *  @return void
- *
- *  @note 
  *  
  */
 int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
@@ -231,7 +203,6 @@ int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
 /**
  *  The method Orderbook::ValidForDay()
  *  
- *
  *  @param const 
  *
  *  @return void
@@ -248,38 +219,10 @@ void Orderbook::ValidForDay()
 
 
     /*
-    
-
 
     if(stoi(hours.substr(11, 2)) < 4 || stoi(hours.substr(11, 2)) > 16)
     {
         std::cout << '\n' << "Error: Not valid trading hours, valid-Hours 4:00AM-8:00PM." << '\n';
-    }
-    
-    
-    
-
-    std::cout << "What mode would you like to run? Enter 1 for Test Mode, Enter 2 for interactive mode, Enter 3 for Cancel Mode ";
-    int mode;
-    std::cin >> mode;
-
-    switch (mode)
-    {
-    case 1:
-        std::cout << "Test Mode" << '\n';
-        
-        break;
-    case 2:
-        std::cout << "Interactive Mode" << '\n';
-        
-        break;
-    case 3:
-        std::cout << "Cancel Mode" << '\n';
-
-        break;
-    default:
-    std::cout << "Error invalid option entered" << '\n';
-        break;
     }
 
     */
