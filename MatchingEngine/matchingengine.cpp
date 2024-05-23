@@ -31,13 +31,20 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             {         
                 std::cout << "AGGRESSIVE ORDER" << '\n';
 
-                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
-                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << " OrderId " << buyIter->second->getOrderId() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << " OrderId " << sellIter->second->getOrderId() << '\n'; 
 
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto b = buyIter->second->setTradeQuantity(minQuantity);
                 auto s = sellIter->second->setTradeQuantity(minQuantity);
  
+                std::cout << "AGGRESSIVE ORDER AFTER TRADE" << '\n';
+                
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << " OrderId " << buyIter->second->getOrderId() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << " OrderId " << sellIter->second->getOrderId() << '\n'; 
+
+
+
                 if(b == 0)
                 {
                     std::cout << "Sell filled" << '\n';
@@ -53,14 +60,21 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             {
                 std::cout << "PASSIVE ORDER" << '\n';
                 
-                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
-                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << " OrderId " << buyIter->second->getOrderId() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << " OrderId " << sellIter->second->getOrderId() << '\n';  
 
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto b = buyIter->second->setTradeQuantity(minQuantity);
                 auto s = sellIter->second->setTradeQuantity(minQuantity);
 
  
+
+                std::cout << "PASSIVE ORDER AFTER TRADE" << '\n';
+                
+                std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << " OrderId " << buyIter->second->getOrderId() << '\n'; 
+                std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << " OrderId " << sellIter->second->getOrderId() << '\n'; 
+
+
                 if(b == 0)
                 {
                     std::cout << "Buy filled" << '\n';
@@ -72,9 +86,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
                     sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
                 }
             }
-            
-            // buyOrders.erase(buyIter);
-            // sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+
             buyIter++;
             sellIter++;
         }
