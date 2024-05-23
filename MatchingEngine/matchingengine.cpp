@@ -8,7 +8,7 @@
 
 
 /**
- *  The method MatchingEngine
+ *  The method MatchingEngine will execute trades between the buy and sell side
  *
  *  @param std::map<Price, OrderPointer>& buyOrders : Map of all buy orders
  * 
