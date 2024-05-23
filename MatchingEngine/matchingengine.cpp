@@ -2,8 +2,16 @@
 #include <iomanip>
 
 #include "matchingengine.h"
-
 #include "../Test/test.h"
+
+
+//    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
+//    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+
+//  buyOrders.erase(buyIter);
+// sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+
+
 
 MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::map<Price, OrderPointer>& sellOrders)
 {
@@ -25,25 +33,66 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             auto buyIter = buyOrders.begin();
             auto sellIter = sellOrders.rbegin();
 
-            // If buy order is aggressive trade against the best ask price
-            if(buyIter->second->getPrice() >= sellIter->second->getPrice())
+            // If the bid is aggressive
+            if(sellIter->second->getPrice() <= buyIter->second->getPrice())
             {
                 std::cout << "TEST AGGRESSIVE ORDER" << '\n';
 
-                std::cout << "Buy order price " << buyIter->first << " quantity " << buyIter->second->getQuantity() << '\n'; 
-                std::cout << "sell order price " << sellIter->first << " quantity " << sellIter->second->getQuantity() << '\n'; 
+                auto ans = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity() );
+                std::cout << "MIN VALUE " <<  ans << '\n';
+                buyIter->second->getQuantity()& - ans;
+                sellIter->second->getQuantity()& - ans;
+
+    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
+    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+
+
+                if(buyIter->second->getQuantity() == 0)
+                {
+                  
+                  std::cout << "buy filled" << '\n';
+                    buyOrders.erase(buyIter);
+                }
+                else if(  sellIter->second->getQuantity() == 0)
+                {
+                   std::cout << "sell filled" << '\n';
+                   
+                    sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+                }
             }
-            else // If buy order is passive
+            // If bid is passive
+            else 
             {
                 std::cout << "TEST PASSIVE ORDER" << '\n';
-                std::cout << "Buy order price " << buyIter->first << " quantity " << buyIter->second->getQuantity() << '\n'; 
-                std::cout << "sell order price " << sellIter->first << " quantity " << sellIter->second->getQuantity() << '\n'; 
+                
+                auto ans = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity() );
+                std::cout << "MIN VALUE " <<  ans << '\n';
+                buyIter->second->getQuantity()& - ans;
+                sellIter->second->getQuantity()& - ans;
+                
+    std::cout << "Buy order: Price " << buyIter->first << " Quantity " << buyIter->second->getQuantity() << '\n'; 
+    std::cout << "Sell order: Price " << sellIter->first << " Quantity " << sellIter->second->getQuantity() << '\n'; 
+
+
+
+                if(buyIter->second->getQuantity() == 0)
+                {
+                  
+                  std::cout << "buy filled" << '\n';
+                    buyOrders.erase(buyIter);
+                }
+                else if(  sellIter->second->getQuantity() == 0)
+                {
+                   std::cout << "sell filled" << '\n';
+                   
+                    sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+                }
             }
-
-
-
+            
             buyOrders.erase(buyIter);
             sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+
+
 
             buyIter++;
             sellIter++;
