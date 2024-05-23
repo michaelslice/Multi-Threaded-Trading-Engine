@@ -13,6 +13,8 @@
 #include "../CurrentTime/current_time.h"
 #include "../ModifyOrder/modifyorder.h"
 
+#include "../MatchingEngine/matchingengine.h"
+
 using namespace std;
 using OrderBook = std::map<Price, OrderPointer>;
 
@@ -29,6 +31,8 @@ using OrderBook = std::map<Price, OrderPointer>;
  */
 int Orderbook::AddOrder(std::string_view file)
 {   
+    ClearBook(buyOrders, sellOrders);
+    
     std::ifstream inputFile(static_cast<std::string>(file));
     std::string SideReader;
     std::string TimeInForceReader;
@@ -71,17 +75,32 @@ int Orderbook::AddOrder(std::string_view file)
         auto orderTypeIterator = orderTypeTable.find(TimeInForceReader);   
         if(orderTypeIterator != orderTypeTable.end()) { fileOrderType = orderTypeIterator->second; };     
 
-        // OrderBook& orders = sideLogic ? buyOrders : sellOrders; // Initialize as reference to maintain throughout program
-        OrderBook& orders = sideLogic ? buyOrders : sellOrders; 
-        
+        OrderBook& orders = sideLogic ? buyOrders : sellOrders; // Initialize as reference to maintain throughout program
         
         OrderPointer ptr (new Order(filePrice, fileQuantity, fileSide, fileOrderType, fileOrderId));
-        orders.insert(std::make_pair(filePrice, ptr));
+        orders.insert(std::make_pair(filePrice, ptr));        
+    }
 
-        for(auto& d : orders)
-        {
-            std::cout << "First Value " << d.first << " Second Value " << d.second->getQuantity() << '\n';
-        }
+    std::cout << '\n' << "BUY ORDERS" << '\n'; 
+    for(auto& d : buyOrders)
+    {
+        std::cout << "First Value Price " << d.first 
+        << " Second Value Quantity " 
+        << d.second->getQuantity() 
+        << " ID " 
+        << d.second->getOrderId()
+        << '\n';
+    }
+
+    std::cout << '\n' << "SELL ORDERS" << '\n'; 
+    for(auto& d : sellOrders)
+    {
+        std::cout << "First Value Price " << d.first 
+        << " Second Value Quantity " 
+        << d.second->getQuantity() 
+        << " ID " 
+        << d.second->getOrderId()
+        << '\n';
     }
 
     inputFile.close();
@@ -117,10 +136,12 @@ void Orderbook::CancelOrder(OrderPointer order)
     }
     if(validId == false) { throw std::logic_error("Error: The requested order to remove does not exist in the OrderBook"); }
     
+    /*
     for(auto& d : orders)
     {
         std::cout << "First Value " << d.first << " Second Value " << d.second->getQuantity() << '\n';
     }
+    */
 }
 
 
@@ -135,6 +156,8 @@ void Orderbook::CancelOrder(OrderPointer order)
  *  @note If the OrderId is valid, the order will be cancelled and replaced, I did it 
  *  this way because if a order is modified it will lose priority in the matching
  *  engine, due to the FIFO priority.
+ * 
+ *  CME FIFO Documentation: https://www.cmegroup.com/confluence/display/EPICSANDBOX/Supported+Matching+Algorithms
  *  
  */
 void Orderbook::ModifyOrder(OrderPointer order)
@@ -160,6 +183,52 @@ void Orderbook::ModifyOrder(OrderPointer order)
 
 
 /**
+ *  The method 
+ *  
+ *
+ *  @param const 
+ *
+ *  @return void
+ *
+ *  @note 
+ *  
+ */
+
+// void Orderbook::ClearBook(std::map<Price, OrderPointer>& orderbook)
+
+void Orderbook::ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders)
+{
+    for(auto it = _buyOrders.begin(); it != _buyOrders.end(); ++it)
+    {
+        _buyOrders.erase(it);
+    }
+        for(auto it1 = _sellOrders.begin(); it1 != _sellOrders.end(); ++it1)
+    {
+        _sellOrders.erase(it1);
+    }
+}
+
+
+
+
+/**
+ *  The method Orderbook
+ *  
+ *
+ *  @param const 
+ *
+ *  @return void
+ *
+ *  @note 
+ *  
+ */
+int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
+{
+    return orderbook.size();
+}
+
+
+/**
  *  The method Orderbook::ValidForDay()
  *  
  *
@@ -175,15 +244,20 @@ void Orderbook::ValidForDay()
     Time time;
     string hours = time.get_current_time();
 
+    MatchingEngine(buyOrders, sellOrders);
+
+
     /*
     
+
+
     if(stoi(hours.substr(11, 2)) < 4 || stoi(hours.substr(11, 2)) > 16)
     {
         std::cout << '\n' << "Error: Not valid trading hours, valid-Hours 4:00AM-8:00PM." << '\n';
     }
     
-    */
-
+    
+    
 
     std::cout << "What mode would you like to run? Enter 1 for Test Mode, Enter 2 for interactive mode, Enter 3 for Cancel Mode ";
     int mode;
@@ -207,4 +281,6 @@ void Orderbook::ValidForDay()
     std::cout << "Error invalid option entered" << '\n';
         break;
     }
+
+    */
 }

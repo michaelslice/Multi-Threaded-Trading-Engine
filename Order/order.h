@@ -37,7 +37,9 @@
 
 class Order
 {
- 
+ friend std::ostream& operator<<(std::ostream& os, const Order& obj);
+
+
 private:
     Price price;
     Side orderside; 
@@ -100,5 +102,8 @@ public:
 using OrderPointer = std::shared_ptr<Order>;
 using OrderPointers = std::list<OrderPointer>; 
 using OrderIds = std::vector<OrderId>;
+
+
+
 
 #endif

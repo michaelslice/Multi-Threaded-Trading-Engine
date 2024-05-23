@@ -10,7 +10,7 @@ class MatchingEngine
 {
 private:
 public:
-    MatchingEngine(std::map<Price, OrderPointer> buyOrders, std::map<Price, OrderPointer> sellOrders);
+    MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::map<Price, OrderPointer>& sellOrders);
     void ExecuteTrade();
 };
 

@@ -17,7 +17,6 @@
 
 class Orderbook
 {
-
 private:
     std::map<Price, OrderPointer> buyOrders; 
     std::map<Price, OrderPointer> sellOrders;
@@ -41,6 +40,9 @@ public:
     int AddOrder(std::string_view file);
     void CancelOrder(OrderPointer order);
     void ModifyOrder(OrderPointer order);
+
+    void ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders);
+    int getOrderBookSize(std::map<Price, OrderPointer>& orderbook);
 };
 
 #endif

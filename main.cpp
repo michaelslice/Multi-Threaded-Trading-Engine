@@ -7,6 +7,8 @@
 #include "Test/test.h"
 
 
+#include "MatchingEngine/matchingengine.h"
+
 using namespace std;
 
 int main()
@@ -24,6 +26,7 @@ int main()
 
   Orderbook book;
 
+  /*
   Price p = 120;
   Quantity q = 50;
   Side s= Side::Buy;
@@ -41,9 +44,13 @@ int main()
   OrderType ot1 = OrderType::GoodTillCancel;
   OrderId oi1 = 5;
 
-OrderPointer ptr1 (new Order(p1, q1, s1, ot1, oi1));
+  OrderPointer ptr1 (new Order(p1, q1, s1, ot1, oi1));
 
   book.ModifyOrder(ptr1);
+*/
+
+  book.AddOrder("orders.txt");
+  book.ValidForDay();
 
   return 0;
 }
