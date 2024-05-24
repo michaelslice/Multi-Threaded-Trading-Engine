@@ -16,7 +16,6 @@
 
 class Test
 {
-private:
 public:
     int readFile(std::string_view file);
     void printOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders);

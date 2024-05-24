@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "../Orderbook/orderbook.h"
+#include "../TimeInForce/timeinforce.h"
 
 class MatchingEngine
 {

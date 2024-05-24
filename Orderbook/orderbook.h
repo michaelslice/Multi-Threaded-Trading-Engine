@@ -20,9 +20,7 @@ class Orderbook
 private:
     std::map<Price, OrderPointer> buyOrders; 
     std::map<Price, OrderPointer> sellOrders;
-
     std::vector<OrderId> orderIds;
-
     mutable std::mutex mtx;
     std::thread orderThread;
     std::condition_variable shutdownConditionVariable_;

@@ -5,7 +5,8 @@
 #include "matchingengine.h"
 #include "../Test/test.h"
 #include "../Trade/trade.h" 
-
+#include "../TimeInForce/timeinforce.h"
+#include "../TimeInForce/timeinforce.cpp"
 
 /**
  *  The method MatchingEngine will execute trades between the buy and sell side
@@ -20,23 +21,32 @@
 MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::map<Price, OrderPointer>& sellOrders)
 {
     Test test;
-    std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "Trade Feed" << '\n' << '\n';
+    TimeInForce timeinforce;
+
+    std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "Trade Feed" << '\n' << '\n'; 
     
     while(!buyOrders.empty())
     {
         while(!sellOrders.empty())
         {
+            auto buyIter = buyOrders.begin();
+            auto sellIter = sellOrders.rbegin();
+
             if(buyOrders.size() == 0 || sellOrders.size() == 0) 
             {
+                
+                if(buyOrders.size() != 0) { timeinforce.DayBuyOrders(buyOrders), timeinforce.FillOrKillBuyOrders(buyOrders); };
+                if(sellOrders.size() != 0) { timeinforce.DaySellOrders(sellOrders), timeinforce.FillOrKillSellOrders(sellOrders); };
+               
+                if(buyOrders.size() != 0) { timeinforce.MarketBuyOrders(buyOrders), timeinforce.MarketBuyOrders(buyOrders); };
+                if(sellOrders.size() != 0) { timeinforce.MarketSellOrders(sellOrders), timeinforce.MarketSellOrders(sellOrders); };
+                
                 std::cout << '\n' << "Size of buyOrders " << buyOrders.size() << '\n';
                 std::cout << "Size of sellOrders " << sellOrders.size() << '\n';
                 
                 if(buyOrders.size() == 0) { std::cout << "Error no more buy orders" << '\n'; } else { std::cout << "Error no more sell orders" << '\n'; };
                 break;
             }
-
-            auto buyIter = buyOrders.begin();
-            auto sellIter = sellOrders.rbegin();
 
             if(sellIter->second->getPrice() <= buyIter->second->getPrice())
             {         
@@ -74,6 +84,8 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             sellIter++;
         }
     }
+
+
     std::cout << '\n' << "Trading Session Completed" << '\n';
     test.printRemainingOrderbook(buyOrders, sellOrders);
 }
