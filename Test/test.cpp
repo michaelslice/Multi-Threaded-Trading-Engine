@@ -43,7 +43,7 @@ int Test::readFile(std::string_view file)
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
     << "Price" << std::right << std::setw(7) << std::setfill(' ') 
-    << "Id" <<'\n';
+    << "ID" <<'\n';
 
     while (std::getline(inputFile, line))
     {
@@ -79,7 +79,7 @@ void Test::printOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Pr
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
     << "Price" << std::right << std::setw(7) << std::setfill(' ') 
-    << "Id" <<'\n';
+    << "ID" <<'\n';
     for(auto& order : _buyOrders)
     {
         std::cout << std::setw(9) << std::left << getOrderSide(order.second->getSide())
@@ -93,7 +93,7 @@ void Test::printOrderbook(std::map<Price, OrderPointer>& _buyOrders, std::map<Pr
     << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
     << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
     << "Price" << std::right << std::setw(7) << std::setfill(' ') 
-    << "Id" <<'\n';
+    << "ID" <<'\n';
     for(auto& d : _sellOrders)
     {
         std::cout << std::setw(9) << std::left << getOrderSide(d.second->getSide())
@@ -118,7 +118,7 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
 {
     if(_buyOrders.size() == 0)
     {
-        std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "BuyOrders are empty" << '\n';
+        std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "All Buy Orders Filled" << '\n';
     }
     else
     {
@@ -127,7 +127,7 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
         << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
         << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
         << "Price" << std::right << std::setw(12) << std::setfill(' ') 
-        << "OrderId" <<'\n';
+        << "ID" <<'\n';
         for(auto& order : _buyOrders)
         {
             std::cout << std::setw(9) << std::left << getOrderSide(order.second->getSide())
@@ -139,7 +139,7 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
     
     if(_sellOrders.size() == 0)
     {
-        std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "SellOrders are empty" << '\n';
+        std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "All Sell Orders Filled" << '\n';
     }
     else
     {
@@ -147,8 +147,8 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
         << "Side" << std::right << std::setw(16) << std::setfill(' ') 
         << "TimeInForce" << std::right << std::setw(14) << std::setfill(' ') 
         << "Quantity" << std::right << std::setw(10) << std::setfill(' ') 
-        << "Price" << std::right << std::setw(12) << std::setfill(' ') 
-        << "OrderId" <<'\n';
+        << "Price" << std::right << std::setw(7) << std::setfill(' ') 
+        << "ID" <<'\n';
         for(auto& d : _sellOrders)
         {
             std::cout << std::setw(9) << std::left << getOrderSide(d.second->getSide())
@@ -171,7 +171,7 @@ void Test::printRemainingOrderbook(std::map<Price, OrderPointer>& _buyOrders, st
 void Test::printFilledBuyOrders(std::map<Price, OrderPointer>::iterator buyIter)
 {
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
-    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
+    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "ID *" << '\n'; 
     std::cout << "* " << getOrderSide(buyIter->second->getSide()) << std::setw(16) << std::right << buyIter->first << std::setw(15) << std::right << buyIter->second->getQuantity() << std::setw(13) << std::right << buyIter->second->getOrderId() << " *"; 
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
 }
@@ -188,7 +188,7 @@ void Test::printFilledBuyOrders(std::map<Price, OrderPointer>::iterator buyIter)
 void Test::printFilledSellOrders(std::reverse_iterator<std::conditional<false, std::map<Price, OrderPointer>::const_iterator, std::_Rb_tree_iterator<std::pair<const Price, OrderPointer>>>::type> sellIter)
 {
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
-    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "OrderId *" << '\n'; 
+    std::cout << "* Side" << std::setfill(' ') << std::setw(15) << std::right << "Price" << std::setw(15) << std::right << "Quantity" << std::setw(15) << std::right << "ID *" << '\n'; 
     std::cout << "* " << getOrderSide(sellIter->second->getSide()) << std::setw(15) << std::right << sellIter->first << std::setw(15) << std::right << sellIter->second->getQuantity() << std::setw(13) << std::right << sellIter->second->getOrderId() << " *"; 
     std::cout << '\n' << std::right << std::setw(52) << std::setfill('*') << '\n';
 }

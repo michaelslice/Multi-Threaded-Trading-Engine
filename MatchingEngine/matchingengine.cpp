@@ -22,7 +22,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
 {
     Test test;
     TimeInForce timeinforce;
-
+    int tradeCount{0};
     std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "Trade Feed" << '\n' << '\n'; 
     
     while(!buyOrders.empty())
@@ -34,23 +34,17 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
 
             if(buyOrders.size() == 0 || sellOrders.size() == 0) 
             {
-                
                 if(buyOrders.size() != 0) { timeinforce.DayBuyOrders(buyOrders), timeinforce.FillOrKillBuyOrders(buyOrders); };
                 if(sellOrders.size() != 0) { timeinforce.DaySellOrders(sellOrders), timeinforce.FillOrKillSellOrders(sellOrders); };
-               
                 if(buyOrders.size() != 0) { timeinforce.MarketBuyOrders(buyOrders), timeinforce.MarketBuyOrders(buyOrders); };
                 if(sellOrders.size() != 0) { timeinforce.MarketSellOrders(sellOrders), timeinforce.MarketSellOrders(sellOrders); };
-                
-                std::cout << '\n' << "Size of buyOrders " << buyOrders.size() << '\n';
-                std::cout << "Size of sellOrders " << sellOrders.size() << '\n';
-                
-                if(buyOrders.size() == 0) { std::cout << "Error no more buy orders" << '\n'; } else { std::cout << "Error no more sell orders" << '\n'; };
                 break;
             }
 
             if(sellIter->second->getPrice() <= buyIter->second->getPrice())
             {         
                 test.printFilledBuyOrders(buyIter);
+                tradeCount++;
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto buyRemainingQuantity = buyIter->second->setTradeQuantity(minQuantity);
                 auto sellRemainingQuantity = sellIter->second->setTradeQuantity(minQuantity);
@@ -58,6 +52,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
                 if(buyRemainingQuantity == 0)
                 {
                     buyOrders.erase(buyIter);
+                               
                 }
                 else if(sellRemainingQuantity == 0)
                 {
@@ -67,6 +62,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             else 
             {
                 test.printFilledSellOrders(sellIter);
+                tradeCount++;
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
                 auto buyRemainingQuantity = buyIter->second->setTradeQuantity(minQuantity);
                 auto sellRemainingQuantity = sellIter->second->setTradeQuantity(minQuantity);
@@ -74,10 +70,11 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
                 if(buyRemainingQuantity == 0)
                 {
                     buyOrders.erase(buyIter);
+                                    
                 }
                 else if(sellRemainingQuantity == 0)
                 {
-                    sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base())); 
+                    sellIter = std::reverse_iterator(sellOrders.erase(std::next(sellIter).base()));   
                 }
             }
             buyIter++;
@@ -85,15 +82,9 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
         }
     }
 
-
-    std::cout << '\n' << "Trading Session Completed" << '\n';
+    std::cout << '\n' << "Trading Session Report" << '\n' << '\n';
+    std::cout << "Number of Trades Executed " << tradeCount << '\n';
+    std::cout << "Buy Orders Remaining " << buyOrders.size() << '\n';
+    std::cout << "Sell Orders Remaining " << sellOrders.size() << '\n';
     test.printRemainingOrderbook(buyOrders, sellOrders);
-}
-
-
-
-void MatchingEngine::ExecuteTrade()
-{
-    // TODO perform actions to execute the trade, updating balances, logging
-    // TODO update account balances, record the trade in a ledger
 }
