@@ -47,7 +47,7 @@ public:
     void ModifyOrder(OrderPointer order);
 
     void ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders);
-    int getOrderBookSize(std::map<Price, OrderPointer>& orderbook);
+    size_t getOrderBookSize(std::map<Price, OrderPointer>& orderbook);
 };
 
 #endif

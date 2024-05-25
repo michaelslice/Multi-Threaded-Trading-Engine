@@ -181,20 +181,16 @@ void Orderbook::ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Pr
  *  @return void
  *  
  */
-int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
+size_t getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
 {   
     return orderbook.size();
 }
 
 
 /**
- *  The method Orderbook::ValidForDay()
- *  
- *  @param const 
+ *  The method Orderbook::ValidForDay() will start a trading session 
  *
  *  @return void
- *
- *  @note 
  *  
  */
 void Orderbook::ValidForDay()
@@ -206,14 +202,19 @@ void Orderbook::ValidForDay()
 }
 
 /**
+ *  Orderbook() is the constructor for the Orderbook class, 
+ *  it will create a seperate thread for execution 
  * 
+ *  @note The constructor uses a member initialization list and 
+ *  a lambda function to capture the current object (this)
+ *  by reference, and then call the ValidForDay method
  * 
 */
 Orderbook::Orderbook(): orderThread{ [this] {ValidForDay(); }} {};
 
 
 /**
- * 
+ *  ~Orderbook() the destructor for the the Orderbook class
  * 
 */
 Orderbook::~Orderbook()
