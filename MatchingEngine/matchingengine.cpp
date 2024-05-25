@@ -1,12 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
-
 #include "matchingengine.h"
-#include "../Test/test.h"
-#include "../Trade/trade.h" 
-#include "../TimeInForce/timeinforce.h"
-#include "../TimeInForce/timeinforce.cpp"
+
 
 /**
  *  The method MatchingEngine will execute trades between the buy and sell side

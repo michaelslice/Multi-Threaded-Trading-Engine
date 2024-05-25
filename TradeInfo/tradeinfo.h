@@ -1,7 +1,6 @@
 #ifndef TRADEINFO_H
 #define TRADEINFO_H
 #include <iostream>
-
 #include "../Order/order.h"
 
 struct TradeInfo

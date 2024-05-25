@@ -5,13 +5,7 @@
 #include <vector>
 #include <iomanip>
 #include <string_view>
-
 #include "test.h"
-#include "../Orderbook/orderbook.h"
-#include "../CurrentTime/current_time.h"
-#include "../ModifyOrder/modifyorder.h"
-#include "../MatchingEngine/matchingengine.h"
-#include "../Order/order.h" 
 
 /**
  *  The method readFile(std::string_view file) is used to read orders from a file, and display their contents

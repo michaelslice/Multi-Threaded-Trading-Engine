@@ -8,12 +8,8 @@
 #include <string_view>
 #include <iomanip>
 #include <map>
-
 #include "orderbook.h"
-#include "../CurrentTime/current_time.h"
-#include "../ModifyOrder/modifyorder.h"
-#include "../MatchingEngine/matchingengine.h"
-#include "../Test/test.h"
+
 
 using namespace std;
 using OrderBook = std::map<Price, OrderPointer>;
@@ -201,16 +197,14 @@ void Orderbook::ValidForDay()
 {
     Time time;
     string hours = time.get_current_time();
-
+    Test test;
+    std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
+    test.readFile("orders.txt");
+    AddOrder("orders.txt");
     MatchingEngine(buyOrders, sellOrders);
-
-
-    /*
-
-    if(stoi(hours.substr(11, 2)) < 4 || stoi(hours.substr(11, 2)) > 16)
-    {
-        std::cout << '\n' << "Error: Not valid trading hours, valid-Hours 4:00AM-8:00PM." << '\n';
-    }
-
-    */
 }
+
+Orderbook::~Orderbook()
+{
+
+};  

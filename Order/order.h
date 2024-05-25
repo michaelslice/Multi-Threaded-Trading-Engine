@@ -4,7 +4,6 @@
 #include <memory>
 #include <algorithm>
 #include <list>
-
 #include "../Side/side.h"
 #include "../OrderType/ordertype.h"
 #include "../OrderId/orderid.h"

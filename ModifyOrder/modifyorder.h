@@ -2,7 +2,6 @@
 #define MODIFYORDER_H
 #include <iostream>
 #include <memory>
-
 #include "../Side/side.h"
 #include "../OrderType/ordertype.h"
 #include "../OrderId/orderid.h"

@@ -1,7 +1,6 @@
 #ifndef ORDERBOOKINFO_H
 #define ORDERBOOKINFO_H
 #include <iostream>
-
 #include "../TradeInfo/tradeinfo.h"
 
 class Trade

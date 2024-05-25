@@ -1,6 +1,6 @@
 #ifndef TRADEINFORCE_H
 #define TRADEINFORCE_H
-
+#include <iostream>
 #include "../Order/order.h"
 #include "../OrderType/ordertype.h"
 #include "../Orderbook/orderbook.h"
@@ -9,7 +9,7 @@
 #include "../Trade/trade.h" 
 
 /*
-    GoodTillCancel,
+    GoodTillCancel, 
     FillAndKill,
     FillOrKill,
     GoodForDay,

@@ -11,7 +11,7 @@ enum class Side
 
 constexpr std::string_view getOrderSide(Side ordertype)
 {
-	switch (ordertype)
+  switch (ordertype)
   {
     case Side::Buy: return "Buy";
     case Side::Sell:   return "Sell";

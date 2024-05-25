@@ -249,6 +249,30 @@ Test/test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/Test/test.cpp.s
 .PHONY : Test/test.cpp.s
 
+TimeInForce/timeinforce.o: TimeInForce/timeinforce.cpp.o
+.PHONY : TimeInForce/timeinforce.o
+
+# target to build an object file
+TimeInForce/timeinforce.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/TimeInForce/timeinforce.cpp.o
+.PHONY : TimeInForce/timeinforce.cpp.o
+
+TimeInForce/timeinforce.i: TimeInForce/timeinforce.cpp.i
+.PHONY : TimeInForce/timeinforce.i
+
+# target to preprocess a source file
+TimeInForce/timeinforce.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/TimeInForce/timeinforce.cpp.i
+.PHONY : TimeInForce/timeinforce.cpp.i
+
+TimeInForce/timeinforce.s: TimeInForce/timeinforce.cpp.s
+.PHONY : TimeInForce/timeinforce.s
+
+# target to generate assembly for a file
+TimeInForce/timeinforce.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TRADING.dir/build.make CMakeFiles/TRADING.dir/TimeInForce/timeinforce.cpp.s
+.PHONY : TimeInForce/timeinforce.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -297,6 +321,9 @@ help:
 	@echo "... Test/test.o"
 	@echo "... Test/test.i"
 	@echo "... Test/test.s"
+	@echo "... TimeInForce/timeinforce.o"
+	@echo "... TimeInForce/timeinforce.i"
+	@echo "... TimeInForce/timeinforce.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
