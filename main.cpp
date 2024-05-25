@@ -10,9 +10,6 @@
 int main()
 {
   // Do some work
-
   Orderbook book;  
-  book.ValidForDay();
-
   return 0;
 }

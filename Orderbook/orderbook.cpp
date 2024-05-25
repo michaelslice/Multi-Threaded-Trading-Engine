@@ -27,6 +27,7 @@ using OrderBook = std::map<Price, OrderPointer>;
  */
 int Orderbook::AddOrder(std::string_view file)
 {   
+    std::scoped_lock<std::mutex> lock(mtx);
     ClearBook(buyOrders, sellOrders);
     
     std::ifstream inputFile(static_cast<std::string>(file));
@@ -79,7 +80,6 @@ int Orderbook::AddOrder(std::string_view file)
 
     Test test;
     test.printOrderbook(buyOrders, sellOrders);
-
     inputFile.close();
     return 0;
 }
@@ -95,6 +95,8 @@ int Orderbook::AddOrder(std::string_view file)
  */
 void Orderbook::CancelOrder(OrderPointer order)
 {    
+    std::scoped_lock<std::mutex> lock(mtx);
+    
     auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
     if(orders.size() == 0) { throw std::logic_error("Error: the OrderBook does not contain any orders to remove."); };
     bool validId = false;
@@ -133,6 +135,8 @@ void Orderbook::CancelOrder(OrderPointer order)
  */
 void Orderbook::ModifyOrder(OrderPointer order)
 {
+    std::scoped_lock<std::mutex> lock(mtx);
+    
     auto& orders = (order->getSide() == Side::Buy) ? buyOrders : sellOrders; 
 
     for(auto it = orders.begin(); it != orders.end(); ++it)
@@ -157,7 +161,7 @@ void Orderbook::ModifyOrder(OrderPointer order)
  *  
  */
 void Orderbook::ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Price, OrderPointer>& _sellOrders)
-{
+{   
     for(auto buyIter = _buyOrders.begin(); buyIter != _buyOrders.end(); ++buyIter)
     {
         _buyOrders.erase(buyIter);
@@ -178,7 +182,7 @@ void Orderbook::ClearBook(std::map<Price, OrderPointer>& _buyOrders, std::map<Pr
  *  
  */
 int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
-{
+{   
     return orderbook.size();
 }
 
@@ -195,16 +199,27 @@ int getOrderBookSize(std::map<Price, OrderPointer>& orderbook)
  */
 void Orderbook::ValidForDay()
 {
-    Time time;
-    string hours = time.get_current_time();
     Test test;
-    std::string_view filepath = "Multi-Threaded-Trading-Engine/Test/TestFiles/orders.txt";
     test.readFile("orders.txt");
     AddOrder("orders.txt");
     MatchingEngine(buyOrders, sellOrders);
 }
 
+/**
+ * 
+ * 
+*/
+Orderbook::Orderbook(): orderThread{ [this] {ValidForDay(); }} {};
+
+
+/**
+ * 
+ * 
+*/
 Orderbook::~Orderbook()
 {
+    shutdown_.store(true, std::memory_order_release);
+	shutdownConditionVariable_.notify_one();
 
+	orderThread.join();
 };  

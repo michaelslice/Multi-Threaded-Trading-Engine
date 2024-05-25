@@ -19,6 +19,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
     Test test;
     TimeInForce timeinforce;
     int tradeCount{0};
+
     std::cout << '\n' << std::right << std::setw(31) << std::setfill(' ') << "Trade Feed" << '\n' << '\n'; 
     
     while(!buyOrders.empty())
@@ -39,6 +40,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
 
             if(sellIter->second->getPrice() <= buyIter->second->getPrice())
             {         
+                std::scoped_lock lock{mtx};
                 test.printFilledBuyOrders(buyIter);
                 tradeCount++;
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
@@ -48,7 +50,6 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
                 if(buyRemainingQuantity == 0)
                 {
                     buyOrders.erase(buyIter);
-                               
                 }
                 else if(sellRemainingQuantity == 0)
                 {
@@ -57,6 +58,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
             }
             else 
             {
+                std::scoped_lock lock{mtx};
                 test.printFilledSellOrders(sellIter);
                 tradeCount++;
                 int minQuantity = std::min(buyIter->second->getQuantity(), sellIter->second->getQuantity());
@@ -65,8 +67,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
                 
                 if(buyRemainingQuantity == 0)
                 {
-                    buyOrders.erase(buyIter);
-                                    
+                    buyOrders.erase(buyIter);          
                 }
                 else if(sellRemainingQuantity == 0)
                 {

@@ -5,12 +5,14 @@
 #include <vector>
 #include <iomanip>
 #include <string_view>
+#include <memory>
 #include "test.h"
+
 
 /**
  *  The method readFile(std::string_view file) is used to read orders from a file, and display their contents
  *
- *  @return int : Return wether there was error or not
+ *  @return int : Return whether there was an error or not
  *
  *  @note Data from files consists of info in the order of Side, Time in Force, Quantity, and Price
  *
@@ -42,7 +44,7 @@ int Test::readFile(std::string_view file)
     while (std::getline(inputFile, line))
     {
         std::istringstream iss(line);
-
+   
         iss >> SideReader >> TimeInForceReader >> PriceReader >> QuantityReader >> OrderNumberReader;
 
         std::cout << std::setw(9) << std::left << SideReader

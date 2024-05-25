@@ -33,7 +33,7 @@ private:
     std::condition_variable shutdownConditionVariable_;
     std::atomic<bool> shutdown_{ false };
 public:
-    Orderbook() = default;
+    Orderbook();
     // If the compiler matches a function call to any of the following, generate a compilation error 
     Orderbook(const Orderbook& other) = delete; 
     Orderbook& operator=(const Orderbook& other) = delete; 
