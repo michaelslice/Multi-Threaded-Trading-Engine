@@ -20,6 +20,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
     Test test;
     TimeInForce timeinforce;
     int tradeCount{0};
+    int cancelledOrders{0};
     int time_micro_seconds;
     int time_nano_seconds;
 
@@ -34,10 +35,10 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
 
             if(buyOrders.size() == 0 || sellOrders.size() == 0) 
             {
-                if(buyOrders.size() != 0) { timeinforce.DayBuyOrders(buyOrders), timeinforce.FillOrKillBuyOrders(buyOrders); };
-                if(sellOrders.size() != 0) { timeinforce.DaySellOrders(sellOrders), timeinforce.FillOrKillSellOrders(sellOrders); };
-                if(buyOrders.size() != 0) { timeinforce.MarketBuyOrders(buyOrders), timeinforce.MarketBuyOrders(buyOrders); };
-                if(sellOrders.size() != 0) { timeinforce.MarketSellOrders(sellOrders), timeinforce.MarketSellOrders(sellOrders); };
+                if(buyOrders.size() != 0) { timeinforce.DayBuyOrders(buyOrders), timeinforce.FillOrKillBuyOrders(buyOrders), cancelledOrders++; };
+                if(sellOrders.size() != 0) { timeinforce.DaySellOrders(sellOrders), timeinforce.FillOrKillSellOrders(sellOrders), cancelledOrders++; };
+                if(buyOrders.size() != 0) { timeinforce.MarketBuyOrders(buyOrders), timeinforce.MarketBuyOrders(buyOrders), cancelledOrders++; };
+                if(sellOrders.size() != 0) { timeinforce.MarketSellOrders(sellOrders), timeinforce.MarketSellOrders(sellOrders), cancelledOrders++; };
                 break;
             }
 
@@ -97,6 +98,7 @@ MatchingEngine::MatchingEngine(std::map<Price, OrderPointer>& buyOrders, std::ma
     std::cout << "* Number of Trades Executed " << tradeCount << std::right << std::setw(21) << std::setfill(' ') << "*" <<'\n';
     std::cout << "* Buy Orders Remaining " << buyOrders.size() << std::right << std::setw(27) << std::setfill(' ') << "*" << '\n';
     std::cout << "* Sell Orders Remaining " << sellOrders.size() << std::right << std::setw(26) << std::setfill(' ') << "*" << '\n';
+    std::cout << "* # of Cancelled Orders " << cancelledOrders << std::right << std::setw(26) << std::setfill(' ') << "*" << '\n';
     std::cout << "* AVG Time in Micro Seconds For Fills " << time_micro_seconds / tradeCount << std::right << std::setw(11) << std::setfill(' ') << "*" << '\n';
     std::cout << "* AVG Time in Nano Seconds For Fills " << time_nano_seconds / tradeCount << std::right << std::setw(9) << std::setfill(' ') << "*" << '\n';
     std::cout << std::right << std::setw(52) << std::setfill('*') << '\n';
