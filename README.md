@@ -30,7 +30,7 @@ If any changes are made in the project
 ## Orders Placed
 All orders within orders.txt will be displayed.
 
-![image](https://github.com/michaelslice/Multi-Threaded-Trading-Engine/assets/110714088/b4944d9e-dd67-4e2f-bb3d-bc4739e8ccc0)
+![OrdersPlaced](https://github.com/michaelslice/Multi-Threaded-Trading-Engine/assets/110714088/71cb5a59-0c9e-47fe-8b34-71b9820ddc8f)
 ### Bid Side
 All buy side orders will be displayed, and added to the BuyOrders map. <br>
 
