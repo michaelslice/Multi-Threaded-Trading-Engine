@@ -52,7 +52,7 @@ Information for the trading session will be displayed. <br>
 
 ![image](https://github.com/michaelslice/Multi-Threaded-Trading-Engine/assets/110714088/556f3cbd-7f7e-4307-8ae5-672700776e8b)
 
-## Remaining Unfilled Orders
+## Remaining Orders
 If there are no more orders on either side, the user will be alerted of orders that were unable to be filled. <br>
 
 ![image](https://github.com/michaelslice/Multi-Threaded-Trading-Engine/assets/110714088/2e398d6d-3f04-40bf-871f-b2196509f571)
