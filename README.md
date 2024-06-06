@@ -17,7 +17,7 @@ A simple implementation of an Orderbook and Matching Engine designed to read ord
 2. ```cd Multi-Threaded-Trading-Engine```
 3. ```cd Build```
 4. ```cmake ..```
-5. ```CMake --build .```
+5. ```cmake --build .```
 6. ```./TRADING```
 
 ## Changing Project
